@@ -1,0 +1,198 @@
+# cargo 常用工作流
+
+cargo 是 Rust 的包管理器兼构建工具：依赖解析、编译、测试、文档、发布都由它一条命令完成。日常开发只用到五个子命令——`new`、`build`、`run`、`test`、`check`——加上 `Cargo.toml` 与 `Cargo.lock` 两个文件。
+
+## 五个核心子命令
+
+`cargo new` 生成 crate 骨架，`cargo build` 编译，`cargo run` 编译并运行，`cargo test` 跑测试，`cargo check` 只做类型检查不产出二进制（比 build 快得多）。
+
+```bash
+cd /tmp/tooling-examples
+cargo new workflow-demo
+cargo new --lib lib-demo
+```
+
+真实运行输出：
+
+```text
+    Creating binary (application) `workflow-demo` package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+    Creating library `lib-demo` package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+```
+
+`cargo new` 默认生成二进制 crate（`src/main.rs`），加 `--lib` 生成库 crate（`src/lib.rs`）。默认 edition 是 2024（cargo 1.99.0 实测）。
+
+```bash
+cd /tmp/tooling-examples/workflow-demo
+cargo build
+cargo run
+cargo test
+cargo check
+```
+
+真实运行输出（四条命令依次执行，空行已压缩）：
+
+```text
+   Compiling workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.16s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/workflow-demo`
+Hello, world!
+   Compiling workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s
+     Running unittests src/main.rs (target/debug/deps/workflow_demo-6238b68263f48a0b)
+running 0 tests
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+    Checking workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.04s
+```
+
+`cargo check` 输出 `Checking` 而非 `Compiling`——它不生成目标文件，只做借用检查与类型检查，是 IDE 之外最快的编译反馈。`cargo test` 会先编译再运行，新 crate 默认没有测试，显示 `running 0 tests`。
+
+## Cargo.toml 结构
+
+`Cargo.toml` 是 crate 的清单文件，最小结构只有三段：`[package]`（名称、版本、edition）、`[dependencies]`（依赖）、可选的 `[features]`（特性开关）。
+
+```toml
+[package]
+name = "workflow-demo"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+```
+
+`name` 决定 crate 在 crates.io 上的标识，`version` 遵循语义化版本，`edition` 决定语言特性集（2015 / 2018 / 2021 / 2024）。`[dependencies]` 下列出直接依赖，写法支持简写（`"serde"`）与展开（`{ version = "1", features = ["derive"] }`）。
+
+## 特性开关与可选依赖
+
+feature 是 crate 暴露的编译期开关，用于按需启用可选功能。可选依赖会自动创建一个同名 feature。实测一个最小例子：
+
+```toml
+[package]
+name = "workflow-demo"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+json = ["dep:serde"]
+
+[dependencies]
+serde = { version = "1", optional = true }
+```
+
+```rust
+fn main() {
+    #[cfg(feature = "json")]
+    println!("json feature on: {}", serde_json_value());
+    #[cfg(not(feature = "json"))]
+    println!("json feature off");
+}
+
+#[cfg(feature = "json")]
+fn serde_json_value() -> i32 { 42 }
+```
+
+真实运行输出：
+
+```text
+--- build without feature ---
+   Compiling workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/workflow-demo`
+json feature off
+--- build with feature ---
+   Compiling serde_core v1.0.229 / serde v1.0.229
+   Compiling workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.56s
+     Running `target/debug/workflow-demo`
+json feature on: 42
+```
+
+不开 feature 时 serde 根本不参与编译；开了之后才拉取并编译 serde。`dep:serde` 是可选依赖的显式引用语法（Rust 1.60+），把可选依赖变成 feature 而不隐式创建同名 feature。
+
+`cargo tree` 能直观看到依赖图。不带 feature 时（真实运行输出）：
+
+```text
+workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+└── serde v1.0.229
+    └── serde_core v1.0.229
+```
+
+serde 1.0.229 默认只带 `serde_core`。再开启 derive feature：
+
+```bash
+cargo build --features serde/derive
+cargo tree --features serde/derive
+```
+
+真实运行输出（build 日志压缩，保留 tree 全文）：
+
+```text
+ Downloading crates ...
+  Downloaded unicode-ident v1.0.27
+  Downloaded syn v3.0.9
+   Compiling proc-macro2 v1.0.107 / quote v1.0.47 / unicode-ident v1.0.27
+   Compiling serde v1.0.229 / syn v3.0.9 / serde_derive v1.0.229
+   Compiling workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 11.23s
+workflow-demo v0.1.0 (/tmp/tooling-examples/workflow-demo)
+└── serde v1.0.229
+    ├── serde_core v1.0.229
+    └── serde_derive v1.0.229 (proc-macro)
+        ├── proc-macro2 v1.0.107
+        │   └── unicode-ident v1.0.27
+        ├── quote v1.0.47
+        │   └── proc-macro2 v1.0.107 (*)
+        └── syn v3.0.9
+            ├── proc-macro2 v1.0.107 (*)
+            ├── quote v1.0.47 (*)
+            └── unicode-ident v1.0.27
+```
+
+`serde/derive` 拉入了 `serde_derive`（过程宏 crate）及其依赖 `proc-macro2`、`quote`、`syn`。`(*)` 表示该依赖已被去重。`cargo tree` 是排查依赖膨胀、看清 feature 传递关系的首选工具。
+
+## Cargo.lock 的作用与提交策略
+
+`Cargo.lock` 是 cargo 自动生成的精确依赖快照，锁定每个依赖的版本与 checksum。首次 `cargo build` 时生成，之后 `cargo build` 直接复用，只有依赖变更才更新。
+
+真实 Cargo.lock 片段（serde 项目）：
+
+```toml
+# This file is automatically @generated by Cargo.
+# It is not intended for manual editing.
+version = 4
+
+[[package]]
+name = "serde"
+version = "1.0.229"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba"
+dependencies = [
+ "serde_core",
+]
+```
+
+提交策略的官方建议（cargo FAQ）：
+
+- **二进制 / 应用项目**：提交 `Cargo.lock`，保证构建可复现，CI 与发布产物一致；
+- **库项目**：当前官方建议也提交（让 CI 与文档构建可复现），但被下游依赖时 lockfile 会被忽略，不约束使用者；
+- 拿不准就提交。
+
+`version = 4` 是当前锁文件格式（Cargo 1.83 起默认写入），旧版 cargo 无法解析 v4 锁文件。
+
+## 工程实践
+
+- **`cargo check` 用于快速反馈**，`cargo build` 用于出产物，`cargo run` 只用于本地调试；
+- **依赖尽量精简**：用 `cargo tree` 定期审计，feature 按需开启（`default-features = false` 再逐个开）；
+- **`cargo update -p <crate>`** 单独升级某个依赖，避免全局 `cargo update` 把无关依赖一起动；
+- **`cargo tree -e features`** 查看 feature 的传递依赖关系，是排查「为什么编译变慢」的利器。
+
+## 相关页面
+
+- [rustfmt 与代码风格](./rustfmt-style)——格式化与 CI 检查。
+- [clippy 与 lint](./clippy-lints)——静态检查与 lint 分级。
+- [rustup 与 MSRV](./rustup-msrv)——`rust-version` 字段与工具链管理。
+
+官方文档：<https://doc.rust-lang.org/cargo/>

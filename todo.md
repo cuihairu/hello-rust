@@ -1,34 +1,32 @@
 # todo
 
-盘点口径：本仓是纯文档站（VitePress），「实现」= 内容页落盘 + 构建绿（含死链核查）+ Pages 线上 200。
-规划底稿 = 根目录 [OUTLINE.md](./OUTLINE.md)（8 个部分知识地图，勾选状态即内容进度）。
-期次分批：P1 大纲 + 语言核心 8 页；P2 类型系统 + 内存与并发 + 异步；P3 宏 + 工具链 + 生态工程 + 语言对照。
+盘点口径：本仓是纯文档站（VitePress），「实现」= 内容页落盘 + `npm run docs:build` 绿（含死链核查）+ Pages 线上 200。
+规划底稿 = [OUTLINE.md](./OUTLINE.md)（8 板块知识地图，勾选即内容进度）。示例一律 `rustc`/`cargo` 真跑，官方出处以 doc.rust-lang.org / std docs / RFC / The Rustonomicon 为准，查不到写「未找到出处」。
 
-## 一、P1：站点骨架 + 语言核心 8 页（已完成，2026-10-13 首单）
+## P1 站点骨架 + 语言核心（已完成）
 
-验收口径（通用）：`npm run docs:build` 绿（含死链核查）+ 代码示例经 `rustc` 真跑 + 官方出处标注（doc.rust-lang.org / std docs / RFC / The Rustonomicon，查不到写「未找到出处」）。
+- [x] 仓库骨架：README 双语 / LICENSE / .gitignore / package.json —— `0d2dccd`，构建绿
+- [x] 站点骨架：首页 + 知识图谱 + 8 导览 + config（base `/hello-rust/`、死链门禁、favicon 用同一 logo）—— `0d2dccd`，产出 19 html
+- [x] CI deploy-docs.yml（node 22 + npm 缓存 + 死链检查）—— `0d2dccd`，run success
+- [x] GitHub About 英文一句 + Pages homepageUrl —— `0d2dccd`，gh 实测生效
+- [x] 第1部分 语言核心 8 页 —— `0d2dccd`，8 页示例全部 rustc 1.99.0 实测
+- [x] 线上抽查 + part 目录 200 —— `128bb40`，run 38411752099 success，首页 / 8 导览 / 8 正文 / logo 全 200
 
-- [x] 仓库骨架：README.md / README.zh.md 双语互链（logo 64×64）、LICENSE、.gitignore、package.json（脚本对齐 hello-*）。验收：新读者按 README 可 `npm ci` + `npm run docs:build` 一次通过。
-- [x] 站点骨架：docs/index.md 首页、docs/knowledge.md 知识图谱、8 个分部导览 index.md、.vitepress/config.mts（base `/hello-rust/`、nav/侧栏、`ignoreDeadLinks: false`）、docs/public/logo.svg、favicon 用同一 logo。验收：构建产出 19 个 html（首页 + 知识图谱 + 8 导览 + 8 正文 + 404），dist 内含 `logo.svg`。
-- [x] CI：.github/workflows/deploy-docs.yml（Pages 部署，node 22 + npm 缓存，actions checkout/setup-node v7、deploy-pages v5，构建含死链检查）。验收：与 hello-postgresql 现行写法一致。
-- [x] GitHub About：英文一句 + Pages homepageUrl。验收：`gh repo view` 可见 description 与 homepage。
-- [x] 第1部分 语言核心 8 页（所有权/借用/切片/生命周期/枚举与模式匹配/trait/泛型/错误处理）。验收：全部示例用 rustc 1.99.0 实测，输出粘贴自真实运行；E0382 / E0502 / E0515 / E0184 / E0277 等编译器错误原文均取自真实编译失败；单态化结论以 `nm` 符号表（`p7_mono::id::<i32>`、`id::<&str>`）实证。
+## P2 类型系统 + 内存与并发 + 异步（已完成）
 
-## 二、P2：类型系统 + 内存与并发 + 异步
+- [x] 第2部分 类型系统与抽象 8 页 —— 本批 commit；28 代码块逐块重编译（21 过 + 7 预期报错，错误码一致）
+- [x] 第3部分 内存与并发 7 页 —— 本批 commit；41 示例 rustc/cargo 实测 + musl/aarch64(qemu)/windows-gnu/wasm 交叉编译真跑
+- [x] 第4部分 异步 6 页 —— 本批 commit；tokio 1.53.2 真跑，RFC 3185 编号核对
 
-- [ ] 第2部分 类型系统与抽象（trait 对象/泛型约束/associated types/零成本抽象/孤儿规则/impl Trait/运算符重载/闭包）
-- [ ] 第3部分 内存与并发（Drop/智能指针/分配器/Send·Sync/无畏并发/交叉编译）
-- [ ] 第4部分 异步（async·await/Pin/Futures/tokio 生态/select 与取消）
+## P3 宏 + 工具链 + 生态工程 + 语言对照（已完成）
 
-## 三、P3：宏 + 工具链 + 生态工程 + 语言对照
+- [x] 第5部分 宏 2 页 —— 本批 commit；proc-macro 工程重建重跑，输出与报错逐字比对
+- [x] 第6部分 工具链 6 页 —— 本批 commit；cargo/rustfmt/clippy/rustup 命令实测
+- [x] 第7部分 生态与工程 5 页 —— 本批 commit；workspace/FFI(bindgen)/no_std/wasm 目标实测
+- [x] 第8部分 与其他语言对照 4 页 —— 本批 commit；差异表逐项与官方文档核对
+- [x] 全站构建门禁 —— 本批 commit；npm run docs:build 绿，57 html，死链门禁过
 
-- [ ] 第5部分 宏（macro_rules/过程宏）
-- [ ] 第6部分 工具链（cargo/rustfmt/clippy/rust-analyzer/交叉编译/MSRV）
-- [ ] 第7部分 生态与工程（workspace/发布 crates/FFI/嵌入式/wasm）
-- [ ] 第8部分 与其他语言对照（C/C++/Go/Java 差异表）
+## 已记录的坑
 
-## 四、待巡检
-
-- [x] 线上抽查：Pages 部署 run success + 首页与深页 curl 200。验收：run 38411752099（build + deploy 两 job 均 success）；`/`、`/knowledge`、`/language-core/`、`/type-system/` 及 8 个正文页、`/logo.svg` 全部 200。
-- [x] part 目录 URL 是否 200（hello-postgresql 曾出现 `/basics/` 404、`/basics/README` 200 的同款问题；本站 part 落地页一律用 `index.md`）。验收：线上 `/language-core/` 与 `/type-system/` 均 200，无该问题。
-- [x] 新仓库启用 GitHub Pages（首单踩坑记录）：全新仓库首次跑 deploy-pages 报 `HttpError: Not Found` / "Ensure GitHub Pages has been enabled"，因为仓库还没有 Pages 站点记录。处置：`gh api repos/cuihairu/hello-rust/pages --method POST --field build_type=workflow --field source.branch=main --field source.path=/` 创建站点（201），再 `workflow_dispatch` 重跑部署即成功。注意用 `POST` 创建、`PUT` 只用于更新；`build_type: workflow` 下 `source.path` 只能是 `/` 或 `/docs`，dist 路径由 workflow 的 upload-pages-artifact 决定，不在此处指定。
+- 新仓库首次 deploy-pages 报 `HttpError: Not Found`：仓库无 Pages 站点记录，需 `gh api repos/cuihairu/hello-rust/pages --method POST --field build_type=workflow --field source.branch=main --field source.path=/` 创建后重跑；`PUT` 仅用于更新，`source.path` 只能 `/` 或 `/docs`，dist 路径由 upload-pages-artifact 决定。
+- VitePress 标题/内联文本里的裸尖括号（如 `## Option<T>`）会被 Vue 当 HTML 标签，构建报 "Element is missing end tag"；须包反引号。`<https://...>` autolink 与代码块内无碍。

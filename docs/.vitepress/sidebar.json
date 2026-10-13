@@ -18,42 +18,87 @@
     "text": "第2部分：类型系统与抽象",
     "link": "/type-system/",
     "collapsed": true,
-    "items": []
+    "items": [
+      { "text": "trait 对象与动态分发", "link": "/type-system/trait-objects" },
+      { "text": "泛型约束与 where 子句", "link": "/type-system/generic-constraints-and-where" },
+      { "text": "associated types", "link": "/type-system/associated-types" },
+      { "text": "零成本抽象", "link": "/type-system/zero-cost-abstraction" },
+      { "text": "孤儿规则与 newtype", "link": "/type-system/orphan-rule-and-newtype" },
+      { "text": "impl Trait", "link": "/type-system/impl-trait" },
+      { "text": "运算符重载", "link": "/type-system/operator-overloading" },
+      { "text": "闭包与 Fn 家族", "link": "/type-system/closures-and-fn-trait-family" }
+    ]
   },
   {
     "text": "第3部分：内存与并发",
     "link": "/memory-concurrency/",
     "collapsed": true,
-    "items": []
+    "items": [
+      { "text": "Drop 与析构", "link": "/memory-concurrency/drop-and-destructors" },
+      { "text": "智能指针", "link": "/memory-concurrency/smart-pointers" },
+      { "text": "内部可变性", "link": "/memory-concurrency/interior-mutability" },
+      { "text": "自定义分配器", "link": "/memory-concurrency/custom-allocator" },
+      { "text": "Send 与 Sync", "link": "/memory-concurrency/send-and-sync" },
+      { "text": "无畏并发", "link": "/memory-concurrency/threads-and-channels" },
+      { "text": "交叉编译", "link": "/memory-concurrency/cross-compilation" }
+    ]
   },
   {
     "text": "第4部分：异步",
     "link": "/async/",
     "collapsed": true,
-    "items": []
+    "items": [
+      { "text": "async/await 与 Future", "link": "/async/async-await-and-future" },
+      { "text": "执行器与运行时", "link": "/async/executors-and-runtime" },
+      { "text": "Pin 与自引用", "link": "/async/pin-and-self-reference" },
+      { "text": "tokio 生态", "link": "/async/tokio-ecosystem" },
+      { "text": "select 与超时取消", "link": "/async/select-and-cancellation" },
+      { "text": "async 中的 Send 与 async trait", "link": "/async/async-send-and-async-trait" }
+    ]
   },
   {
     "text": "第5部分：宏",
     "link": "/macros/",
     "collapsed": true,
-    "items": []
+    "items": [
+      { "text": "声明式宏 macro_rules", "link": "/macros/declarative-macros" },
+      { "text": "过程宏", "link": "/macros/proc-macros" }
+    ]
   },
   {
     "text": "第6部分：工具链",
     "link": "/tooling/",
     "collapsed": true,
-    "items": []
+    "items": [
+      { "text": "cargo 常用工作流", "link": "/tooling/cargo-workflow" },
+      { "text": "rustfmt 与代码风格", "link": "/tooling/rustfmt-style" },
+      { "text": "clippy 与 lint", "link": "/tooling/clippy-lints" },
+      { "text": "rust-analyzer 与编辑器", "link": "/tooling/rust-analyzer-editor" },
+      { "text": "rustup 与 MSRV", "link": "/tooling/rustup-msrv" },
+      { "text": "交叉编译实战", "link": "/tooling/cross-compilation-practice" }
+    ]
   },
   {
     "text": "第7部分：生态与工程",
     "link": "/ecosystem/",
     "collapsed": true,
-    "items": []
+    "items": [
+      { "text": "workspace 与多 crate 工程", "link": "/ecosystem/workspace" },
+      { "text": "发布 crate 到 crates.io", "link": "/ecosystem/publish-crate" },
+      { "text": "FFI 与 C 互操作", "link": "/ecosystem/ffi-c-interop" },
+      { "text": "嵌入式 Rust", "link": "/ecosystem/embedded-nostd" },
+      { "text": "WebAssembly", "link": "/ecosystem/wasm" }
+    ]
   },
   {
     "text": "第8部分：与其他语言对照",
     "link": "/comparison/",
     "collapsed": true,
-    "items": []
+    "items": [
+      { "text": "Rust vs C/C++", "link": "/comparison/vs-ccpp" },
+      { "text": "Rust vs Go", "link": "/comparison/vs-go" },
+      { "text": "Rust vs Java", "link": "/comparison/vs-java" },
+      { "text": "速查总表", "link": "/comparison/cheatsheet-table" }
+    ]
   }
 ]
