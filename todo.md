@@ -29,5 +29,6 @@
 
 ## 四、待巡检
 
-- [ ] 线上抽查：Pages 部署 run success + 首页与深页 curl 200
-- [ ] part 目录 URL 是否 200（hello-postgresql 曾出现 `/basics/` 404、`/basics/README` 200 的同款问题；本站已用 `index.md` 落地，需线上确认）
+- [x] 线上抽查：Pages 部署 run success + 首页与深页 curl 200。验收：run 38411752099（build + deploy 两 job 均 success）；`/`、`/knowledge`、`/language-core/`、`/type-system/` 及 8 个正文页、`/logo.svg` 全部 200。
+- [x] part 目录 URL 是否 200（hello-postgresql 曾出现 `/basics/` 404、`/basics/README` 200 的同款问题；本站 part 落地页一律用 `index.md`）。验收：线上 `/language-core/` 与 `/type-system/` 均 200，无该问题。
+- [x] 新仓库启用 GitHub Pages（首单踩坑记录）：全新仓库首次跑 deploy-pages 报 `HttpError: Not Found` / "Ensure GitHub Pages has been enabled"，因为仓库还没有 Pages 站点记录。处置：`gh api repos/cuihairu/hello-rust/pages --method POST --field build_type=workflow --field source.branch=main --field source.path=/` 创建站点（201），再 `workflow_dispatch` 重跑部署即成功。注意用 `POST` 创建、`PUT` 只用于更新；`build_type: workflow` 下 `source.path` 只能是 `/` 或 `/docs`，dist 路径由 workflow 的 upload-pages-artifact 决定，不在此处指定。
