@@ -1,0 +1,10 @@
+# 第2部分：类型系统与抽象
+
+trait 对象与动态分发、泛型约束与 where 子句、associated types、零成本抽象——Rust 表达「多种类型、一套行为」的方式。
+
+（规划中：trait 对象、泛型约束、associated types、零成本抽象、孤儿规则与 newtype、impl Trait、运算符重载、闭包与 Fn 家族）
+
+---
+
+- [语言核心](../language-core/) —— 地基：所有权、借用、生命周期、trait 入门。
+- [内存与并发](../memory-concurrency/) —— 所有权在并发与智能指针上的延伸。
