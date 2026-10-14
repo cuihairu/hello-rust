@@ -189,10 +189,12 @@ dependencies = [
 - **`cargo update -p <crate>`** 单独升级某个依赖，避免全局 `cargo update` 把无关依赖一起动；
 - **`cargo tree -e features`** 查看 feature 的传递依赖关系，是排查「为什么编译变慢」的利器。
 
+## 参考资料
+
+- 官方文档：《The Cargo Book》· Introduction：<https://doc.rust-lang.org/cargo/>
+
 ## 相关页面
 
 - [rustfmt 与代码风格](./rustfmt-style)——格式化与 CI 检查。
 - [clippy 与 lint](./clippy-lints)——静态检查与 lint 分级。
 - [rustup 与 MSRV](./rustup-msrv)——`rust-version` 字段与工具链管理。
-
-官方文档：<https://doc.rust-lang.org/cargo/>

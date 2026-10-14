@@ -100,5 +100,9 @@
       { "text": "Rust vs Java", "link": "/comparison/vs-java" },
       { "text": "速查总表", "link": "/comparison/cheatsheet-table" }
     ]
+  },
+  {
+    "text": "术语表",
+    "link": "/glossary"
   }
 ]

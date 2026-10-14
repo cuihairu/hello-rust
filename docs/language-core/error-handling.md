@@ -90,10 +90,12 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 - **错误类型不匹配时 `?` 编译失败**：如 `Result<_, ParseIntError>` 里 `?` 一个 `String` 错误会报 E0277，需要 `map_err` 或统一成 `Box<dyn Error>`；
 - **`unwrap` 在测试里可以，在生产里要克制**：测试失败需要明确 panic，生产代码优先 `match` / `unwrap_or` / `expect`。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 9 章 · Error Handling：<https://doc.rust-lang.org/book/ch09-00-error-handling.html>
+
 ## 相关页面
 
 - [枚举与模式匹配](./enums-and-pattern-matching)——`Option` 与 `Result` 都是枚举。
 - [trait 与实现](./traits)——`Error` trait 与 `From` 转换。
 - [所有权与移动语义](./ownership-and-move)——错误值本身也遵循 move 规则。
-
-官方文档：<https://doc.rust-lang.org/book/ch09-00-error-handling.html>

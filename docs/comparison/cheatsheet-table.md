@@ -127,6 +127,10 @@
 - **不要跨语言背绝对数字**：二进制体积、编译时间、并发规模都强依赖机器与环境，语义结论（编译期拦截 vs 运行时 UB）才是可迁移的知识。
 - **UB 类结论的读法**：「C/C++ 数据竞争是 UB」是标准层面的判定，不代表每次运行都出错——本页 c3 实测就是 5 次全对的反例。标准判定 + 实测现象要分开陈述。
 
+## 参考资料
+
+- 官方文档：《The Rust Reference》· Behavior considered undefined：<https://doc.rust-lang.org/reference/behavior-considered-undefined.html>
+
 ## 相关页面
 
 - [Rust vs C/C++](./vs-ccpp)——内存安全、泛型、构建系统的逐项实测。
@@ -135,5 +139,3 @@
 - [板块首页](./)——本板块导览。
 - [知识点整理](../knowledge)——全站复习主线。
 - [语言核心](../language-core/)——所有权、借用、生命周期等基础概念。
-
-官方文档：<https://doc.rust-lang.org/reference/behavior-considered-undefined.html>

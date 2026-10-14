@@ -161,10 +161,12 @@ wasm 和嵌入式都常与 `no_std` 搭配，但定位截然不同：
 - **体积优化**：wasm 产物对体积敏感，用 `wasm-opt` 和 `opt-level = "z"` 优化；
 - **`no_std` 兼容**：wasm 目标支持 `no_std`，但 `wasm-bindgen` 的部分功能依赖 std。
 
+## 参考资料
+
+- 官方文档：《Rust and WebAssembly》官方书：<https://rustwasm.github.io/docs/book/>
+
 ## 相关页面
 
 - [嵌入式 Rust](./embedded-nostd)——同为无 OS 目标的另一分支。
 - [异步](../async/)——wasm 里的 async 与 JS Promise 互操作。
 - [工具链](../tooling/)——rustup 与交叉编译。
-
-官方文档：<https://rustwasm.github.io/docs/book/>

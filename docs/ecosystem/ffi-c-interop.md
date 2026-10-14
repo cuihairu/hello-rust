@@ -187,10 +187,12 @@ let bindings = bindgen::Builder::default()
 - **所有权对称**：`into_raw` / `from_raw` 必须配对，C 分配的内存用 C 的释放函数；
 - **bindgen 定位**：大型 C 库用 bindgen 生成绑定，小型 API 手写更可控。
 
+## 参考资料
+
+- 官方文档：《The Rustonomicon》· FFI：<https://doc.rust-lang.org/nomicon/ffi.html>
+
 ## 相关页面
 
 - [workspace 与多 crate 工程](./workspace)——多 crate 组织。
 - [语言核心](../language-core/)——`unsafe` 与裸指针。
 - [语言对照](../comparison/)——Rust 与 C 的逐项差异。
-
-官方文档：<https://doc.rust-lang.org/nomicon/ffi.html>

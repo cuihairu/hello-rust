@@ -171,6 +171,10 @@ Rust 侧实测（`rustc r8_result_question.rs`）输出 `Ok(42)` 与 `Err(ParseI
 - **Rust 也有逃生口**：`unsafe` 允许绕过检查（FFI、底层数据结构、性能关键路径），但它是「把责任显式移交给程序员」，不是「关掉安全检查」。
 - **模板元编程没有直接对应物**：C++ 的图灵完备模板元编程在 Rust 里由 `const fn`、const generics 和过程宏分担，能力边界不同，不要指望一一映射。
 
+## 参考资料
+
+- 官方文档：《The Rust Reference》· Behavior considered undefined：<https://doc.rust-lang.org/reference/behavior-considered-undefined.html>
+
 ## 相关页面
 
 - [Rust vs Go](./vs-go)——并发模型与错误处理的另一条对照线。
@@ -179,5 +183,3 @@ Rust 侧实测（`rustc r8_result_question.rs`）输出 `Ok(42)` 与 `Err(ParseI
 - [所有权与移动语义](../language-core/ownership-and-move)——Rust 内存模型的根基。
 - [生命周期](../language-core/lifetimes)——引用有效期的标注规则。
 - [泛型与单态化](../language-core/generics-and-monomorphization)——trait bound 与单态化细节。
-
-官方文档：<https://doc.rust-lang.org/reference/behavior-considered-undefined.html>

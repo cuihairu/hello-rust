@@ -149,10 +149,12 @@ cargo fmt --check
 - **配置**：团队统一 `rustfmt.toml` 并提交到仓库，避免每个人本地配置不同；
 - **nightly 选项**：确需 `imports_granularity` 等选项时，CI 与本地都用 `cargo +nightly fmt`，并在 README 注明。
 
+## 参考资料
+
+- 官方文档：Rustfmt 官方文档：<https://rust-lang.github.io/rustfmt/>
+
 ## 相关页面
 
 - [cargo 常用工作流](./cargo-workflow)——`cargo fmt` 是 cargo 的子命令。
 - [clippy 与 lint](./clippy-lints)——格式化之后的下一道静态检查。
 - [rust-analyzer 与编辑器](./rust-analyzer-editor)——编辑器保存时自动调用 rustfmt。
-
-官方文档：<https://rust-lang.github.io/rustfmt/>

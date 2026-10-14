@@ -136,10 +136,12 @@ Caused by:
 - **发布后打 git tag**：官方建议每个发布版本对应一个 tag，配合 `cargo-release` 等工具自动化；
 - **`.crate` 文件上限 10MB**：打包前检查体积。
 
+## 参考资料
+
+- 官方文档：《The Cargo Book》· Publishing on crates.io：<https://doc.rust-lang.org/cargo/reference/publishing.html>
+
 ## 相关页面
 
 - [workspace 与多 crate 工程](./workspace)——路径依赖在 workspace 内自动成为成员。
 - [工具链](../tooling/)——cargo 常用工作流。
 - [语言核心](../language-core/)——crate 与模块系统。
-
-官方文档：<https://doc.rust-lang.org/cargo/reference/publishing.html>

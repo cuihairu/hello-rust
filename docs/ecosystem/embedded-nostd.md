@@ -139,10 +139,12 @@ Embassy 与 RTIC 都是运行时，区别在并发模型：Embassy 用 async 任
 
 **本环境标注**：`embassy-executor`、`rtic` crate 可以从 crates.io 拉取（本环境 `cargo add` 成功），但没有真实硬件，**无法实测烧录运行**，此处仅作概念定位。
 
+## 参考资料
+
+- 官方文档：《The Embedded Rust Book》：<https://docs.rust-embedded.org/book/>
+
 ## 相关页面
 
 - [WebAssembly](./wasm)——同为无 OS 目标的另一分支。
 - [异步](../async/)——Embassy 的 async 基础。
 - [memory-concurrency](../memory-concurrency/)——`UnsafeCell` 与内部可变性。
-
-官方文档：<https://docs.rust-embedded.org/book/>

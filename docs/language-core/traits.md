@@ -91,10 +91,12 @@ p == q: true
 - **`derive` 只处理「按字段逐一」的逻辑**：`#[derive(Eq)]` 对 `f64` 会编译失败（`f64` 不实现 `Eq`，因为 NaN），需要手写 `impl`。
 - **孤儿规则限制跨类型实现**：不能为「外部 trait + 外部类型」实现 impl（如 `impl std::fmt::Display for Vec<foo::Bar>`），详见第 2 部分孤儿规则。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 10 章 · Defining Shared Behavior with Traits：<https://doc.rust-lang.org/book/ch10-02-traits.html>
+
 ## 相关页面
 
 - [泛型与单态化](./generics-and-monomorphization)——`impl Trait` 的展开形式。
 - [枚举与模式匹配](./enums-and-pattern-matching)——`derive` 为枚举生成 trait 实现。
 - [错误处理](./error-handling)——`Error` trait 与 `Box<dyn Error>`。
-
-官方文档：<https://doc.rust-lang.org/book/ch10-02-traits.html>

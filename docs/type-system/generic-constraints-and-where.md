@@ -178,11 +178,13 @@ For more information about this error, try `rustc --explain E0369`.
 
 报错发生在**编译期**：约束缺失不是运行时崩溃，而是根本编译不过。这正是泛型约束的意义——把「类型必须满足的条件」写成契约。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 10 章 · Defining Shared Behavior with Traits：<https://doc.rust-lang.org/book/ch10-02-traits.html>
+
 ## 相关页面
 
 - [trait 与实现](../language-core/traits)——约束里 `+` 连接的这些东西是什么。
 - [泛型与单态化](../language-core/generics-and-monomorphization)——约束如何驱动单态化。
 - [关联类型](./associated-types)——`where I::Item: Display` 里关联类型的完整讲法。
 - [`impl Trait`](./impl-trait)——另一种写约束的语法。
-
-官方文档：<https://doc.rust-lang.org/book/ch10-02-traits.html>

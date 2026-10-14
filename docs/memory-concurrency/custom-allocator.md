@@ -172,10 +172,12 @@ static GLOBAL: Jemalloc = Jemalloc;
 - **分配器里不能分配**：日志、锁、String 都可能递归，`GlobalAlloc` 实现里只能用原子与 `System`。
 - **契约是 unsafe 承诺**：对齐不满足、零大小返回悬空指针，都是未定义行为。
 
+## 参考资料
+
+- 官方文档：std 标准库 · GlobalAlloc in std::alloc：<https://doc.rust-lang.org/std/alloc/trait.GlobalAlloc.html>
+
 ## 相关页面
 
 - [所有权与移动语义](../language-core/ownership-and-move)——分配的内存何时释放，由所有权决定。
 - [Drop 与析构](./drop-and-destructors)——释放路径的另一半。
 - [交叉编译](./cross-compilation)——wasm 等 no_std 目标正是自定义分配器的主场。
-
-官方文档：<https://doc.rust-lang.org/std/alloc/trait.GlobalAlloc.html>

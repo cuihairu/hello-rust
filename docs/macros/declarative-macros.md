@@ -192,9 +192,11 @@ fn main() {
 }
 ```
 
+## 参考资料
+
+- 官方文档：《The Rust Reference》· Macros by example：<https://doc.rust-lang.org/reference/macros-by-example.html>
+
 ## 相关页面
 
 - [trait 与实现](../language-core/traits)——`derive` 是宏生成 `impl` 的特例。
 - [知识点整理](../knowledge)——全站复习主线。
-
-官方文档：<https://doc.rust-lang.org/reference/macros-by-example.html>

@@ -188,10 +188,12 @@ stable: row 5
 
 `Future` trait 本身是 object-safe 的——`dyn Future<Output = T>` 可以正常传递和 poll。这是因为 `poll` 的接收者是 `Pin<&mut Self>` 而不是 `Self`，不要求 `Self: Sized`。
 
+## 参考资料
+
+- 官方文档：RFC 3185 · static async fn in trait：<https://rust-lang.github.io/rfcs/3185-static-async-fn-in-trait.html>
+
 ## 相关页面
 
 - [tokio 生态](./tokio-ecosystem)——`spawn` 的 `Send` 要求。
 - [Pin 与自引用](./pin-and-self-reference)——`Pin<Box<F>>` 与 `Unpin` 的关系。
 - [select 与超时取消](./select-and-cancellation)——取消与 `Send` 的交互。
-
-官方文档：<https://rust-lang.github.io/rfcs/3185-static-async-fn-in-trait.html>

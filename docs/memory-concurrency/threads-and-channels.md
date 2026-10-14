@@ -190,10 +190,12 @@ data = [11, 12, 13]
 - **`Mutex` 保护数据而不是代码**：把 `Mutex<T>` 与被保护数据放一起，锁的粒度自然正确。
 - **死锁依然可能**：Rust 防数据竞争，不防两个锁的获取顺序相反——channel 架构天然回避这个问题。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 16 章 · Fearless Concurrency：<https://doc.rust-lang.org/book/ch16-00-concurrency.html>
+
 ## 相关页面
 
 - [Send 与 Sync](./send-and-sync)——`spawn` 边界 `F: Send + 'static` 的原理。
 - [交叉编译](./cross-compilation)——多平台构建这些线程程序。
 - [async 生态](../async/)——线程之外的第二条并发路线。
-
-官方文档：<https://doc.rust-lang.org/book/ch16-00-concurrency.html>

@@ -191,10 +191,12 @@ fn main() {
 - **`Cell`/`RefCell` 都不是 `Sync`**：跨线程等价物是 `Mutex`/`RwLock`/原子类型。
 - **panic 不是异常处理**：`borrow` 冲突 panic 说明逻辑写错了，生产代码用 `try_borrow` 探测。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 15 章 · RefCell&lt;T&gt; and the Interior Mutability Pattern：<https://doc.rust-lang.org/book/ch15-05-interior-mutability.html>
+
 ## 相关页面
 
 - [智能指针](./smart-pointers)——`Rc<RefCell<T>>` 共享可变数据的经典组合。
 - [借用与引用](../language-core/borrowing-and-references)——被运行时化的那条静态规则。
 - [无畏并发](./threads-and-channels)——`Mutex`/`RwLock` 是跨线程版本的"RefCell"。
-
-官方文档：<https://doc.rust-lang.org/book/ch15-05-interior-mutability.html>

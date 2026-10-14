@@ -131,10 +131,12 @@ $ file target/wasm32-unknown-unknown/release/hello.wasm
 - **已实测**：target-list 查询、rustup 已装列表、musl 静态构建并运行、aarch64 失败→config.toml→成功→qemu 运行、riscv64gc 失败报错、windows-gnu 构建、wasm 构建。
 - **未实测**：windows 产物的实际运行（无 wine）、macOS/iOS target（本机无 Apple 工具链）、`cargo-zigbuild`/`cross` 等第三方方案。
 
+## 参考资料
+
+- 官方文档：《The rustc book》· Platform Support：<https://doc.rust-lang.org/rustc/platform-support.html>
+
 ## 相关页面
 
 - [自定义分配器](./custom-allocator)——wasm/no_std 目标的运行时支撑。
 - [Send 与 Sync](./send-and-sync)——跨平台并发代码的线程安全前提。
 - [工具链全景](../tooling/)——rustup、cargo 的更多实践。
-
-官方文档：<https://doc.rust-lang.org/rustc/platform-support.html>

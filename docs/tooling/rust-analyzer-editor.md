@@ -128,10 +128,12 @@ rust-analyzer 自身 `documentFormattingProvider` 可用——它内部调用 ru
 - **大项目用 `cargo check` 预热**：编辑器诊断和 `cargo check` 共享缓存；
 - **配置提交到仓库**：`.vscode/settings.json` 里的 rust-analyzer 配置提交，保证团队一致。
 
+## 参考资料
+
+- 官方文档：rust-analyzer 官网：<https://rust-analyzer.github.io/>
+
 ## 相关页面
 
 - [rustfmt 与代码风格](./rustfmt-style)——rust-analyzer 的格式化后端。
 - [clippy 与 lint](./clippy-lints)——`check.command = "clippy"` 接入编辑器。
 - [rustup 与 MSRV](./rustup-msrv)——rust-analyzer 作为 rustup 组件安装。
-
-官方文档：<https://rust-analyzer.github.io/>

@@ -180,10 +180,12 @@ counter = 4
 - **`Rc` 跨线程报 E0277 不是因为数据，而是因为计数**：`Rc::clone` 也要读写计数。
 - **锁中毒（poisoning）**：持锁线程 panic 后 `lock()` 返回 `Err`，`.unwrap()` 会传播恐慌，这是设计而非事故。
 
+## 参考资料
+
+- 官方文档：《The Rustonomicon》· Send and Sync：<https://doc.rust-lang.org/nomicon/send-and-sync.html>
+
 ## 相关页面
 
 - [无畏并发](./threads-and-channels)——`spawn`/channel/锁的使用全景。
 - [智能指针](./smart-pointers)——`Rc` 与 `Arc` 的差异源头。
 - [内部可变性](./interior-mutability)——`Cell`/`RefCell` 为什么不是 `Sync`。
-
-官方文档：<https://doc.rust-lang.org/nomicon/send-and-sync.html>

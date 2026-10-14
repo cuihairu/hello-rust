@@ -144,10 +144,12 @@ spawn_blocking 结果: 30
 
 `tokio::spawn` 要求 future 实现 `Send`——因为任务可能被调度到任意 worker 线程。规则是：**跨 `.await` 持有的所有数据都必须是 `Send`**。`std::sync::MutexGuard` 不是 `Send` 的，跨 await 持锁会导致编译失败（`future cannot be sent between threads safely`）。完整的报错示例、`Send` bound 的由来和两种修复方式见 [async 中的 Send 问题与 async trait](./async-send-and-async-trait)。
 
+## 参考资料
+
+- 官方文档：Tokio 官方教程 · Spawning：<https://tokio.rs/tokio/tutorial/spawning>
+
 ## 相关页面
 
 - [执行器与运行时](./executors-and-runtime)——tokio runtime 的调度模型。
 - [select 与超时取消](./select-and-cancellation)——`tokio::select!` 与 `CancellationToken`。
 - [async 中的 Send 问题与 async trait](./async-send-and-async-trait)——`Send` 问题的完整讨论。
-
-官方文档：<https://tokio.rs/tokio/tutorial/spawning>

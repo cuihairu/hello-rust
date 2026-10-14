@@ -185,10 +185,12 @@ Inspector drop: hello
 - **`Copy` 与 `Drop` 互斥**：实现了 `Drop` 的类型不能再实现 `Copy`。
 - **drop 顺序是语言保证**，依赖它写的代码（先释放依赖、后释放资源）是安全的。
 
+## 参考资料
+
+- 官方文档：《The Rustonomicon》· Drop Check：<https://doc.rust-lang.org/nomicon/dropck.html>
+
 ## 相关页面
 
 - [所有权与移动语义](../language-core/ownership-and-move)——drop 发生在所有权语义的地基上。
 - [智能指针](./smart-pointers)——`Box`/`Rc`/`Arc` 的释放都由 `Drop` 实现。
 - [无畏并发](./threads-and-channels)——锁的释放同样靠 drop（RAII 守卫）。
-
-官方文档：<https://doc.rust-lang.org/nomicon/dropck.html>

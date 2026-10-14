@@ -90,10 +90,12 @@ fn describe(n: i32) -> &'static str {
 - **match 必须穷尽，除非有通配符 `_`**：漏分支是编译错误而非运行时 bug，`_` 通配符会掩盖将来新增的变体，谨慎使用。
 - **枚举变体可以携带不同大小与类型的字段**，编译后 `Shape` 会被编译成「标签 + 联合体（union）」，不额外浪费内存——这也是代数数据类型的核心价值。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 6 章 · Defining an Enum：<https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html>
+
 ## 相关页面
 
 - [错误处理](./error-handling)——`Option` 与 `Result` 都是两变体枚举。
 - [trait 与实现](./traits)——`derive(Debug)` 等派生宏为枚举生成 trait 实现。
 - [所有权与移动语义](./ownership-and-move)——match 分支里值的 move 语义。
-
-官方文档：<https://doc.rust-lang.org/book/ch06-01-kinds-of-values.html>

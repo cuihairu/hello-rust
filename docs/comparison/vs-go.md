@@ -175,6 +175,10 @@ func sum[T Number](xs []T) T {
 - **Rust 的 `?` 不是异常**：它是「提前返回 `Err`」的语法糖，没有栈展开成本，也不会跨越多层调用栈隐式传播。
 - **两者都在向对方靠拢**：Go 在补泛型、在补 `any` 之外的抽象能力；Rust 在补异步生态、在改善编译速度。
 
+## 参考资料
+
+- 官方文档：《Effective Go》（Go 官方）：<https://go.dev/doc/effective_go>
+
 ## 相关页面
 
 - [Rust vs C/C++](./vs-ccpp)——内存安全与泛型的另一条对照线。
@@ -182,5 +186,3 @@ func sum[T Number](xs []T) T {
 - [速查总表](./cheatsheet-table)——按维度逐项汇总。
 - [所有权与移动语义](../language-core/ownership-and-move)——Rust 无 GC 的根基。
 - [错误处理](../language-core/error-handling)——`Result` 与 `?` 的完整语义。
-
-官方文档：<https://go.dev/doc/effective_go>

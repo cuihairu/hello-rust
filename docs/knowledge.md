@@ -1,6 +1,6 @@
 # 知识点整理
 
-本页把全站内容收拢成一条复习主线：核心概念、权威书籍、官方文档、应用场景、常见坑。站内链接指向展开正文，条目只留结论，推导与示例在正文里。
+本页把全站内容收拢成一条复习主线：核心概念、权威书籍、官方文档、应用场景、常见坑。站内链接指向展开正文，条目只留结论，推导与示例在正文里。另配[术语表](./glossary)供中英对照与权威出处速查。
 
 ## 一、语言核心
 
@@ -70,7 +70,7 @@
 2. **《Programming Rust》（Jim Blandy 等，O'Reilly）**：面向有系统编程经验读者的深入讲解，内存与并发部分参考。
 3. **《Rust for Rustaceans》（Jon Gjengset）**：所有权、生命周期、trait 对象的进阶视角，类型系统部分参考。
 4. **《The Rustonomicon》**：unsafe Rust 与内存模型权威参考，内存与并发部分引用：<https://doc.rust-lang.org/nomicon/>。
-5. **《Tokio: Asynchronous Programming in Rust》（Carl Lerche）**：异步执行器与运行时部分参考：<https://tokio.rs/tokio/tutorial/introduction>。
+5. **《Tokio: Asynchronous Programming in Rust》（Carl Lerche）**：异步执行器与运行时部分参考：<https://tokio.rs/tokio/tutorial>。
 
 ## 十、官方文档要点
 

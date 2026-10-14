@@ -188,10 +188,12 @@ impl Future for HandWritten {
 结果: async 块的结果
 ```
 
+## 参考资料
+
+- 官方文档：std 标准库 · Future in std::future：<https://doc.rust-lang.org/std/future/trait.Future.html>
+
 ## 相关页面
 
 - [执行器与运行时](./executors-and-runtime)——谁负责 poll 这些状态机。
 - [Pin 与自引用](./pin-and-self-reference)——为什么 `poll` 的接收者是 `Pin<&mut Self>`。
 - [async 中的 Send 问题与 async trait](./async-send-and-async-trait)——状态机跨线程时的约束。
-
-官方文档：<https://doc.rust-lang.org/std/future/trait.Future.html>

@@ -110,10 +110,12 @@ error[E0515]: cannot return reference to local variable `s`
 - **NLL 不是万能的**：跨分支、跨函数的复杂借用仍可能报错，报错时先画一下各引用的「最后使用点」。
 - **借用检查只认编译期**：运行时的动态借用（如 `RefCell`）是另一套机制，见第 3 部分内存与并发。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 4 章 · References and Borrowing：<https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html>
+
 ## 相关页面
 
 - [所有权与移动语义](./ownership-and-move)——借用是 move 的替代方案。
 - [生命周期](./lifetimes)——跨函数传递引用时的标注。
 - [trait 与实现](./traits)——`&self` / `&mut self` 是 trait 方法的常见接收者。
-
-官方文档：<https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html>

@@ -152,10 +152,12 @@ For more information about this error, try `rustc --explain E0599`.
 
 能用的办法只有显式穿透一层字段：`w.0.len()`、`w.0.iter()`……方法多的时候可以再补一个 `Deref` 实现，让方法解析自动穿透（见[运算符重载](./operator-overloading)里的 `Deref` 一节）。
 
+## 参考资料
+
+- 官方文档：《The Rust Reference》· Implementations（Orphan rules 节）：<https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules>
+
 ## 相关页面
 
 - [trait 与实现](../language-core/traits)——impl 的基本规则，孤儿规则的入门提及。
 - [零成本抽象](./zero-cost-abstraction)——newtype 为什么不增加运行时开销。
 - [运算符重载](./operator-overloading)——`Deref` 补救「方法丢失」的办法。
-
-官方文档：<https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules>

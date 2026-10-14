@@ -123,11 +123,13 @@ len via Deref = 3
 
 调用运算符 `()` 的「重载」是个特例：它由 `Fn`/`FnMut`/`FnOnce` 家族提供，也就是闭包机制本身，见[闭包与 `Fn` 家族](./closures-and-fn-trait-family)。
 
+## 参考资料
+
+- 官方文档：std 标准库 · std::ops：<https://doc.rust-lang.org/std/ops/>
+
 ## 相关页面
 
 - [关联类型](./associated-types)——每个运算 trait 的 `Output` 与默认类型参数。
 - [闭包与 `Fn` 家族](./closures-and-fn-trait-family)——调用运算符 `()` 的重载机制。
 - [孤儿规则与 newtype](./orphan-rule-and-newtype)——`Deref` 补救方法丢失的权衡。
 - [trait 与实现](../language-core/traits)——运算 trait 也是普通 trait。
-
-官方文档：<https://doc.rust-lang.org/std/ops/>

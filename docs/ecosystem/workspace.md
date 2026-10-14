@@ -118,10 +118,12 @@ app: hello, world (via util::greet)
 serde json: {"x":3,"y":4}
 ```
 
+## 参考资料
+
+- 官方文档：《The Cargo Book》· Workspaces：<https://doc.rust-lang.org/cargo/reference/workspaces.html>
+
 ## 相关页面
 
 - [发布 crate 到 crates.io](./publish-crate)——路径依赖与发布的冲突。
 - [工具链](../tooling/)——cargo 与 rustup 的日常用法。
 - [语言核心](../language-core/)——crate 与模块系统。
-
-官方文档：<https://doc.rust-lang.org/cargo/reference/workspaces.html>

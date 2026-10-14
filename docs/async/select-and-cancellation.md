@@ -171,10 +171,12 @@ main: worker 已退出
 
 协作式取消适用于长任务：worker 可以清理资源、持久化状态、通知其他任务。硬取消（drop）做不到这些。
 
+## 参考资料
+
+- 官方文档：Tokio 官方教程 · Select：<https://tokio.rs/tokio/tutorial/select>
+
 ## 相关页面
 
 - [tokio 生态](./tokio-ecosystem)——runtime、spawn、JoinHandle。
 - [执行器与运行时](./executors-and-runtime)——select 与执行器事件循环的关系。
 - [async 中的 Send 问题与 async trait](./async-send-and-async-trait)——取消与 Send 的交互。
-
-官方文档：<https://tokio.rs/tokio/tutorial/select>

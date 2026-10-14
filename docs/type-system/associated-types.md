@@ -147,11 +147,13 @@ Millis(3)
 
 注意 `Output` 也是关联类型——「相加得什么」由实现者决定，这里 `Seconds + Millis` 直接得到 `Millis`，不需要类型转换。运算符重载的完整用法见[运算符重载](./operator-overloading)。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 20 章 · Advanced Traits：<https://doc.rust-lang.org/book/ch20-02-advanced-traits.html>
+
 ## 相关页面
 
 - [泛型约束与 `where` 子句](./generic-constraints-and-where)——`where I::Item: Display` 的语法基础。
 - [泛型与单态化](../language-core/generics-and-monomorphization)——泛型参数一侧的完整讲法。
 - [运算符重载](./operator-overloading)——`Add`、`Index` 等带关联类型的运算 trait。
 - [trait 对象](./trait-objects)——关联类型 trait 与 `dyn` 的兼容问题。
-
-官方文档：<https://doc.rust-lang.org/book/ch20-02-advanced-traits.html>

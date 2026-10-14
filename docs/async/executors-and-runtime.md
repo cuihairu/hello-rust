@@ -186,10 +186,12 @@ tokio 的多线程运行时（`multi_thread` flavor）用一组 worker 线程并
 
 两种 flavor 的实测对比（任务分散在多个 worker 线程 vs 全部在一个线程）见 [tokio 生态](./tokio-ecosystem) 的 runtime 一节。
 
+## 参考资料
+
+- 官方文档：《Asynchronous Programming in Rust》· Applied: Build an Executor：<https://rust-lang.github.io/async-book/02_execution/04_executor.html>
+
 ## 相关页面
 
 - [async/await 与 Future](./async-await-and-future)——执行器 poll 的对象是什么。
 - [tokio 生态](./tokio-ecosystem)——`#[tokio::main]`、`spawn`、`JoinHandle` 的用法。
 - [select 与超时取消](./select-and-cancellation)——执行器之上如何组合多个 future。
-
-官方文档：<https://rust-lang.github.io/async-book/02_execution/04_executor.html>

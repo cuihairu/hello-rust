@@ -96,10 +96,12 @@ fn main() {
 - **结构体持有引用必须标注**：`struct Parser<'a> { input: &'a str }`——结构体的生命周期参数是必填项。
 - **生命周期参数与泛型参数并列**：`fn f<'a, T: 'a>(x: &'a T)`，泛型约束里可以要求 `T: 'a`。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 10 章 · Validating References with Lifetimes：<https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html>
+
 ## 相关页面
 
 - [借用与引用](./borrowing-and-references)——生命周期是借用规则的静态化。
 - [切片与 &str](./slices-and-str)——切片作为返回值时的经典标注场景。
 - [trait 与实现](./traits)——trait 对象与生命周期的关系见第 2 部分类型系统。
-
-官方文档：<https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html>

@@ -74,10 +74,12 @@ deref coercion 的规则是链式的：`&String` → `&str` → `&[u8]`。它发
 - **字符串切片必须落在 UTF-8 字符边界上**：对多字节字符（如中文）切到字符中间会 panic。
 - **`&str` 不拥有数据**：它的生命周期不能超过被引用数据，跨函数返回局部 `String` 的切片会编译失败（见 [生命周期](./lifetimes)）。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 4 章 · The Slice Type：<https://doc.rust-lang.org/book/ch04-03-slices.html>
+
 ## 相关页面
 
 - [所有权与移动语义](./ownership-and-move)——切片不转移所有权，只借用。
 - [借用与引用](./borrowing-and-references)——切片受同样规则约束。
 - [生命周期](./lifetimes)——切片作为返回值时的标注。
-
-官方文档：<https://doc.rust-lang.org/book/ch04-03-slices.html>

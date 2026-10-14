@@ -165,10 +165,12 @@ target/aarch64-unknown-linux-musl/debug/cross-demo: ELF 64-bit LSB executable, A
 - **riscv64gc target**：`rustup target add` 成功但 `cargo build` 失败——本环境无 riscv64 链接器，未用 `cross` 验证；
 - **`--fix-cortex-a53-843419` 报错**：是 aarch64 glibc target 在无交叉链接器时的典型错误，配置 linker 后消失，已在上面记录。
 
+## 参考资料
+
+- 官方文档：《The Cargo Book》· Configuration：<https://doc.rust-lang.org/cargo/reference/config.html>
+
 ## 相关页面
 
 - [rustup 与 MSRV](./rustup-msrv)——`rustup target add` 与组件管理。
 - [cargo 常用工作流](./cargo-workflow)——`cargo build` 与产物目录。
 - [宏](../macros/)——过程宏在交叉编译中的注意点。
-
-官方文档：<https://doc.rust-lang.org/cargo/reference/config.html>

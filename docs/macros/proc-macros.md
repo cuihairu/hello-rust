@@ -192,8 +192,10 @@ error: Builder 只支持结构体
 
 `derive` 的甜区是**对每个字段做同一件事**：`Clone`、`Debug`、`Eq`、`Hash`、本例的 `Builder` 都是逐字段生成代码。一旦逻辑涉及字段之间的关系（`f64` 的 `Eq` 因 NaN 无效、跨字段一致性校验），derive 的表达力就不够，手写 `impl` 更清晰。另一条边界是孤儿规则：derive 宏由 crate 提供、作用于本地类型，不受孤儿规则限制。
 
+## 参考资料
+
+- 官方文档：《The Rust Reference》· Procedural macros：<https://doc.rust-lang.org/reference/procedural-macros.html>
+
 ## 相关页面
 
 - [声明式宏 `macro_rules!`](./declarative-macros)——匹配器与卫生性的对照面。
-
-官方文档：<https://doc.rust-lang.org/reference/procedural-macros.html>

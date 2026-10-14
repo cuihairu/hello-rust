@@ -136,11 +136,13 @@ second call -> 42
 
 第二个闭包根本没被执行——`should not happen` 没有出现。这类「可能只调一次」的 API（`unwrap_or_else`、`map_or_else` 等）都把约束放宽到 `FnOnce`，正是三个 trait 层级关系的直接应用。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 13 章 · Closures：<https://doc.rust-lang.org/book/ch13-01-closures.html>
+
 ## 相关页面
 
 - [`impl Trait`](./impl-trait)——闭包作为参数与返回值的签名写法。
 - [关联类型](./associated-types)——`FnOnce::Output` 描述返回值类型。
 - [所有权与 move](../language-core/ownership-and-move)——捕获与 `move` 的语义根基。
 - [trait 与实现](../language-core/traits)——`Fn` 家族就是三个普通 trait。
-
-官方文档：<https://doc.rust-lang.org/book/ch13-01-closures.html>

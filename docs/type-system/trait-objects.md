@@ -189,11 +189,13 @@ vtable ptr circle = 0x5590f64f3808, square = 0x5590f64f3828
 - **默认生命周期是 `'static`**：`Box<dyn Trait>` 实际是 `Box<dyn Trait + 'static>`，要借用局部数据需写 `Box<dyn Trait + 'a>`；
 - **对象安全在「使用处」报错**：定义带泛型方法的 trait 不报错，写 `&dyn Bad` 才报 E0038。
 
+## 参考资料
+
+- 官方文档：《The Rust Reference》· Trait object types：<https://doc.rust-lang.org/reference/types/trait-object.html>
+
 ## 相关页面
 
 - [泛型与单态化](../language-core/generics-and-monomorphization)——静态分发的对照面。
 - [trait 与实现](../language-core/traits)——trait 定义与默认方法。
 - [impl Trait](./impl-trait)——另一种「不暴露具体类型」的抽象。
 - [错误处理](../language-core/error-handling)——`Box<dyn Error>` 是 trait 对象的典型应用。
-
-官方文档：<https://doc.rust-lang.org/reference/types/trait-object.html>

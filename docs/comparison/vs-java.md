@@ -189,6 +189,10 @@ Java 的启动成本来自 JVM 初始化 + 类加载 + JIT 预热——前几次
 - **Rust 没有「万能基类」**：`Object` 的继承体系在 Rust 里对应的是 trait + 泛型，思维模型要从「is-a 继承」转向「has-a 能力」。
 - **`Option` 不是可空的银弹**：`unwrap()` 滥用等于把 NPE 换成 panic；惯用做法是 `match`/`if let`/`unwrap_or`/`?`。
 
+## 参考资料
+
+- 官方文档：《The Java Tutorials》· Type Erasure：<https://docs.oracle.com/javase/tutorial/java/generics/erasure.html>
+
 ## 相关页面
 
 - [Rust vs C/C++](./vs-ccpp)——内存安全与泛型的另一条对照线。
@@ -196,5 +200,3 @@ Java 的启动成本来自 JVM 初始化 + 类加载 + JIT 预热——前几次
 - [速查总表](./cheatsheet-table)——按维度逐项汇总。
 - [所有权与移动语义](../language-core/ownership-and-move)——Rust 无 GC 的根基。
 - [错误处理](../language-core/error-handling)——`Result` 与 `?`。
-
-官方文档：<https://docs.oracle.com/javase/tutorial/java/generics/erasure.html>

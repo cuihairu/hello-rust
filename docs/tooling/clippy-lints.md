@@ -188,10 +188,12 @@ fn clone_on_copy(x: i32) -> i32 { x }
 - **整组 deny 要谨慎**：`#![deny(clippy::pedantic)]` 会把所有 pedantic lint 变成硬错误，误报也会阻断编译，建议 `#![warn(clippy::pedantic)]` 配合 `cargo clippy -- -D warnings` 分级管控；
 - **lint 名以 `cargo clippy` 输出为准**：lint 命名随版本调整（改名、移组），不要凭记忆写，本页所有 lint 名都以 clippy 0.1.99 实测输出为准。
 
+## 参考资料
+
+- 官方文档：Clippy 官方 lint 列表：<https://rust-lang.github.io/rust-clippy/master/>
+
 ## 相关页面
 
 - [rustfmt 与代码风格](./rustfmt-style)——格式化与 lint 是两道互补的检查。
 - [cargo 常用工作流](./cargo-workflow)——`cargo clippy` 是 cargo 的子命令。
 - [rust-analyzer 与编辑器](./rust-analyzer-editor)——编辑器内联显示 clippy 提示。
-
-官方文档：<https://rust-lang.github.io/rust-clippy/master/>

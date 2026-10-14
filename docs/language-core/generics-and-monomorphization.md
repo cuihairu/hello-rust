@@ -91,10 +91,12 @@ fn main() {
 - **泛型参数默认没有 `Sized` 约束**：`fn f<T>(x: T)` 要求 `T` 编译期已知大小；`fn f<T: ?Sized>(x: &T)` 才接受 `str`、`[T]` 这类动态大小类型；
 - **单态化会拖慢编译**：大量实例化（如泛型 + 迭代器链）会显著增加编译时间，必要时用 `dyn Trait` 收敛。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 10 章 · Generic Data Types：<https://doc.rust-lang.org/book/ch10-01-syntax.html>
+
 ## 相关页面
 
 - [trait 与实现](./traits)——`impl Trait` 是泛型参数的语法糖。
 - [所有权与移动语义](./ownership-and-move)——泛型函数里值的 move 规则不变。
 - [知识点整理](../knowledge)——全站复习主线。
-
-官方文档：<https://doc.rust-lang.org/book/ch10-01-syntax.html>

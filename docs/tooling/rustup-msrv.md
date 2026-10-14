@@ -142,10 +142,12 @@ error: could not compile `msrv-demo` (bin "msrv-demo") due to 1 previous error
 
 迁移用 `cargo fix --edition` 自动处理大部分机械改动。
 
+## 参考资料
+
+- 官方文档：《The rustup book》：<https://rust-lang.github.io/rustup/>
+
 ## 相关页面
 
 - [cargo 常用工作流](./cargo-workflow)——`Cargo.toml` 与 `Cargo.lock`。
 - [rust-analyzer 与编辑器](./rust-analyzer-editor)——rust-analyzer 作为 rustup 组件安装。
 - [交叉编译实战](./cross-compilation-practice)——`rustup target add` 安装 target。
-
-官方文档：<https://rust-lang.github.io/rustup/>

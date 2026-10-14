@@ -130,11 +130,13 @@ fn main() {
 - **用了的不比手写差**：静态分发 + 内联让抽象层在机器码里消失（上面的汇编就是证据）；
 - **成本转移到了编译期**：单态化为每个类型复制一份代码，换来的是编译时间变长、二进制变大——「零」指的是**运行时开销**为零。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 13 章 · Performance in Loops vs. Iterators：<https://doc.rust-lang.org/book/ch13-04-performance.html>
+
 ## 相关页面
 
 - [泛型与单态化](../language-core/generics-and-monomorphization)——单态化机制的入门讲法。
 - [trait 对象](./trait-objects)——动态分发这条路线的代价对比。
 - [关联类型](./associated-types)——迭代器抽象赖以成立的类型机制。
 - [`impl Trait`](./impl-trait)——写这类抽象最常用的签名语法。
-
-官方文档：<https://doc.rust-lang.org/book/ch13-04-performance.html>

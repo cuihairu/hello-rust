@@ -190,10 +190,12 @@ main: data = [1, 2, 3]
 - **`Rc`/`Arc` 是不可变共享**：想改内部值需要 `Cell`/`RefCell`/`Mutex` 组合，正是下一页主题。
 - **检测环泄漏**：drop 后打印 `Rc::strong_count`，计数不归零即成环。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 15 章 · Smart Pointers：<https://doc.rust-lang.org/book/ch15-00-smart-pointers.html>
+
 ## 相关页面
 
 - [Drop 与析构](./drop-and-destructors)——`Rc` 计数归零后如何调用内部值的 `Drop`。
 - [内部可变性](./interior-mutability)——`RefCell` 与 `Rc`/`Arc` 的经典组合。
 - [Send 与 Sync](./send-and-sync)——为什么 `Rc` 不能跨线程而 `Arc` 可以。
-
-官方文档：<https://doc.rust-lang.org/book/ch15-00-smart-pointers.html>

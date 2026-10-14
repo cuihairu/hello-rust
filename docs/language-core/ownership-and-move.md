@@ -108,11 +108,13 @@ fn main() {
 - **clone 不是银弹**：深拷贝有运行时开销，频繁 clone 大对象前先想清楚所有权能不能直接转移。
 - **Copy 类型没有 drop 语义**：整数离开作用域什么都不发生，所以 `Copy` 与 `Drop` 互斥（实现了 `Drop` 的类型不能实现 `Copy`）。
 
+## 参考资料
+
+- 官方文档：《The Rust Programming Language》第 4 章 · What is Ownership?：<https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html>
+
 ## 相关页面
 
 - [借用与引用](./borrowing-and-references)——不转移所有权地使用值。
 - [切片与 &str](./slices-and-str)——对堆数据的视图。
 - [生命周期](./lifetimes)——引用有效期的标注。
 - [知识点整理](../knowledge)——全站复习主线。
-
-官方文档：<https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html>

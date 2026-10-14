@@ -187,11 +187,13 @@ len = 5
 
 edition 2024 起这条规则放宽：RPIT 默认捕获作用域内**所有**生命周期，第一个版本不加 `use<'_>` 也能编译（本机 rustc 1.99.0、edition 2024 下实测通过）。`-> impl Iterator<Item = &str>` 这类写法则两个 edition 下都没问题——该生命周期出现在边界里，2021 就已捕获。
 
+## 参考资料
+
+- 官方文档：《The Rust Reference》· Impl trait type：<https://doc.rust-lang.org/reference/types/impl-trait.html>
+
 ## 相关页面
 
 - [泛型约束与 `where` 子句](./generic-constraints-and-where)——`impl Trait` 背后的约束系统。
 - [闭包与 `Fn` 家族](./closures-and-fn-trait-family)——`impl Fn` 里的 `Fn` 到底是什么。
 - [trait 对象](./trait-objects)——`Box<dyn Trait>` 路线的完整对比。
 - [关联类型](./associated-types)——`impl Iterator<Item = i32>` 的语法解读。
-
-官方文档：<https://doc.rust-lang.org/reference/types/impl-trait.html>
