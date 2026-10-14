@@ -197,3 +197,4 @@ stable: row 5
 - [tokio 生态](./tokio-ecosystem)——`spawn` 的 `Send` 要求。
 - [Pin 与自引用](./pin-and-self-reference)——`Pin<Box<F>>` 与 `Unpin` 的关系。
 - [select 与超时取消](./select-and-cancellation)——取消与 `Send` 的交互。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

@@ -200,3 +200,4 @@ fn main() {
 - [智能指针](./smart-pointers)——`Rc<RefCell<T>>` 共享可变数据的经典组合。
 - [借用与引用](../language-core/borrowing-and-references)——被运行时化的那条静态规则。
 - [无畏并发](./threads-and-channels)——`Mutex`/`RwLock` 是跨线程版本的"RefCell"。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

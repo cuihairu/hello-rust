@@ -197,3 +197,4 @@ impl Future for HandWritten {
 - [执行器与运行时](./executors-and-runtime)——谁负责 poll 这些状态机。
 - [Pin 与自引用](./pin-and-self-reference)——为什么 `poll` 的接收者是 `Pin<&mut Self>`。
 - [async 中的 Send 问题与 async trait](./async-send-and-async-trait)——状态机跨线程时的约束。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

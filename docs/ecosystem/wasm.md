@@ -170,3 +170,4 @@ wasm 和嵌入式都常与 `no_std` 搭配，但定位截然不同：
 - [嵌入式 Rust](./embedded-nostd)——同为无 OS 目标的另一分支。
 - [异步](../async/)——wasm 里的 async 与 JS Promise 互操作。
 - [工具链](../tooling/)——rustup 与交叉编译。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

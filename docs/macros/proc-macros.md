@@ -199,3 +199,4 @@ error: Builder 只支持结构体
 ## 相关页面
 
 - [声明式宏 `macro_rules!`](./declarative-macros)——匹配器与卫生性的对照面。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

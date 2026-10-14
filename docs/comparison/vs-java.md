@@ -200,3 +200,4 @@ Java 的启动成本来自 JVM 初始化 + 类加载 + JIT 预热——前几次
 - [速查总表](./cheatsheet-table)——按维度逐项汇总。
 - [所有权与移动语义](../language-core/ownership-and-move)——Rust 无 GC 的根基。
 - [错误处理](../language-core/error-handling)——`Result` 与 `?`。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

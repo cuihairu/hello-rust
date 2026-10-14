@@ -195,3 +195,4 @@ tokio 的多线程运行时（`multi_thread` flavor）用一组 worker 线程并
 - [async/await 与 Future](./async-await-and-future)——执行器 poll 的对象是什么。
 - [tokio 生态](./tokio-ecosystem)——`#[tokio::main]`、`spawn`、`JoinHandle` 的用法。
 - [select 与超时取消](./select-and-cancellation)——执行器之上如何组合多个 future。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

@@ -197,3 +197,4 @@ fn clone_on_copy(x: i32) -> i32 { x }
 - [rustfmt 与代码风格](./rustfmt-style)——格式化与 lint 是两道互补的检查。
 - [cargo 常用工作流](./cargo-workflow)——`cargo clippy` 是 cargo 的子命令。
 - [rust-analyzer 与编辑器](./rust-analyzer-editor)——编辑器内联显示 clippy 提示。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

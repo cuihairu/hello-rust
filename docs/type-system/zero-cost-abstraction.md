@@ -140,3 +140,4 @@ fn main() {
 - [trait 对象](./trait-objects)——动态分发这条路线的代价对比。
 - [关联类型](./associated-types)——迭代器抽象赖以成立的类型机制。
 - [`impl Trait`](./impl-trait)——写这类抽象最常用的签名语法。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

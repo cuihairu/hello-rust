@@ -199,3 +199,4 @@ main: data = [1, 2, 3]
 - [Drop 与析构](./drop-and-destructors)——`Rc` 计数归零后如何调用内部值的 `Drop`。
 - [内部可变性](./interior-mutability)——`RefCell` 与 `Rc`/`Arc` 的经典组合。
 - [Send 与 Sync](./send-and-sync)——为什么 `Rc` 不能跨线程而 `Arc` 可以。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

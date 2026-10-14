@@ -13,3 +13,4 @@ async/await 与 Future、Pin 与自引用、tokio 生态、select 与取消—�
 
 - [内存与并发](../memory-concurrency/) —— 同步并发的地基：Send 与 Sync、channel 与锁。
 - [语言核心](../language-core/) —— trait、生命周期、所有权等异步代码依赖的语言基础。
+- [术语表](../glossary) —— 全站核心术语的中英对照与权威出处。

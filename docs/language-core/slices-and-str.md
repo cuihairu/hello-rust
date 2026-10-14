@@ -83,3 +83,4 @@ deref coercion 的规则是链式的：`&String` → `&str` → `&[u8]`。它发
 - [所有权与移动语义](./ownership-and-move)——切片不转移所有权，只借用。
 - [借用与引用](./borrowing-and-references)——切片受同样规则约束。
 - [生命周期](./lifetimes)——切片作为返回值时的标注。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

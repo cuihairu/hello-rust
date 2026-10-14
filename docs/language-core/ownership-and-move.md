@@ -117,4 +117,5 @@ fn main() {
 - [借用与引用](./borrowing-and-references)——不转移所有权地使用值。
 - [切片与 &str](./slices-and-str)——对堆数据的视图。
 - [生命周期](./lifetimes)——引用有效期的标注。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。
 - [知识点整理](../knowledge)——全站复习主线。

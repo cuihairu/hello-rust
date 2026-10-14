@@ -105,3 +105,4 @@ fn main() {
 - [借用与引用](./borrowing-and-references)——生命周期是借用规则的静态化。
 - [切片与 &str](./slices-and-str)——切片作为返回值时的经典标注场景。
 - [trait 与实现](./traits)——trait 对象与生命周期的关系见第 2 部分类型系统。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

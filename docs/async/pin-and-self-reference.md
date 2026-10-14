@@ -196,3 +196,4 @@ note: required by a bound in `block_on`
 - [async/await 与 Future](./async-await-and-future)——`poll` 的接收者为什么是 `Pin<&mut Self>`。
 - [执行器与运行时](./executors-and-runtime)——执行器如何持有和 poll 被 Pin 的 future。
 - [async 中的 Send 问题与 async trait](./async-send-and-async-trait)——Pin 与 Send 的交集。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

@@ -199,3 +199,4 @@ vtable ptr circle = 0x5590f64f3808, square = 0x5590f64f3828
 - [trait 与实现](../language-core/traits)——trait 定义与默认方法。
 - [impl Trait](./impl-trait)——另一种「不暴露具体类型」的抽象。
 - [错误处理](../language-core/error-handling)——`Box<dyn Error>` 是 trait 对象的典型应用。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

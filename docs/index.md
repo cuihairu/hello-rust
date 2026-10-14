@@ -13,6 +13,12 @@ hero:
       text: 开始阅读
       link: /language-core/
     - theme: alt
+      text: 知识点整理
+      link: /knowledge
+    - theme: alt
+      text: 术语表
+      link: /glossary
+    - theme: alt
       text: GitHub
       link: https://github.com/cuihairu/hello-rust
 
@@ -29,4 +35,6 @@ features:
     details: cargo、rustfmt、clippy、rust-analyzer、MSRV 策略；workspace、发布 crates、FFI、嵌入式、wasm。
   - title: 跨语言对照
     details: 与 C/C++、Go、Java 在内存安全、错误处理、并发模型、构建系统上的逐项差异表。
+  - title: 术语表
+    details: 六十条核心术语的中英对照、一句话定义与实测可点的官方出处，按八个部分分组。
 ---

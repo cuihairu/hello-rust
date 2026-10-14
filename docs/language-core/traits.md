@@ -100,3 +100,4 @@ p == q: true
 - [泛型与单态化](./generics-and-monomorphization)——`impl Trait` 的展开形式。
 - [枚举与模式匹配](./enums-and-pattern-matching)——`derive` 为枚举生成 trait 实现。
 - [错误处理](./error-handling)——`Error` trait 与 `Box<dyn Error>`。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

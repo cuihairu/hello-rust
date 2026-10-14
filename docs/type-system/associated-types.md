@@ -157,3 +157,4 @@ Millis(3)
 - [泛型与单态化](../language-core/generics-and-monomorphization)——泛型参数一侧的完整讲法。
 - [运算符重载](./operator-overloading)——`Add`、`Index` 等带关联类型的运算 trait。
 - [trait 对象](./trait-objects)——关联类型 trait 与 `dyn` 的兼容问题。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

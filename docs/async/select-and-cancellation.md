@@ -180,3 +180,4 @@ main: worker 已退出
 - [tokio 生态](./tokio-ecosystem)——runtime、spawn、JoinHandle。
 - [执行器与运行时](./executors-and-runtime)——select 与执行器事件循环的关系。
 - [async 中的 Send 问题与 async trait](./async-send-and-async-trait)——取消与 Send 的交互。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

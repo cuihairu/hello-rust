@@ -198,3 +198,4 @@ dependencies = [
 - [rustfmt 与代码风格](./rustfmt-style)——格式化与 CI 检查。
 - [clippy 与 lint](./clippy-lints)——静态检查与 lint 分级。
 - [rustup 与 MSRV](./rustup-msrv)——`rust-version` 字段与工具链管理。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

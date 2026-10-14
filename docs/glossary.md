@@ -1,234 +1,508 @@
-# 术语表
+---
+title: 术语篇
+layout: page
+---
 
-本表收录本站 Rust 语言核心、类型系统、内存与并发、异步、工具链与生态的核心术语，每条给出中英对照、一句话定义、权威出处与相关页。
+# 术语篇
 
-**维护口径**：新增条目必须给出可点的权威出处（本表出处均为本站写作时逐条实测可达的官方文档）；查不到就写「未找到权威出处（待核）」，不得凭印象编造链接。
+同一门语言里，「所有权」在 Rust 与 C++ 的含义完全不同，「零成本」在不同章节各有所指。这里把全站八个部分的核心术语集中到一个入口：统一释义、标注它出现的部分，点开可以回到原文。支持检索，也可以当作目录逐部分浏览。
+
+词条中的「出处」链接指向经实测可用的官方文档（The Rust Programming Language、The Rust Reference、The Cargo Book、std 文档、Tokio 教程等），逐条经 curl 验证；查无权威出处的词条不写链接，不用印象代替出处。
+
+## 维护口径
+
+新增条目必须给出可点的权威出处（须先实测可用）；查不到就写「未找到权威出处（待核）」，不得凭印象编造链接。出处链接的章节名一律取自该页实测 `<title>`，不手写猜测。
 
 ## 语言核心
 
 ### 所有权（Ownership）
-Rust 的内存管理模型：每个值有唯一所有者，值离开作用域时其内存被自动释放。
-**出处**：[The Book · What is Ownership?](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)
-**相关页**：[所有权与移动语义](/language-core/ownership-and-move)
+
+每个值在任一时刻有且仅有一个 owner；赋值与传参默认转移所有权，owner 离开作用域时值被 drop。
+
+**出处**：[《The Rust Programming Language》· What is Ownership?](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)、[std · Drop in std::ops](https://doc.rust-lang.org/std/ops/trait.Drop.html)
+
+**相关页**：[language-core/ownership-and-move](/language-core/ownership-and-move)、[memory-concurrency/drop-and-destructors](/memory-concurrency/drop-and-destructors)
 
 ### 借用（Borrowing）
-通过引用临时使用值而不取得所有权；同一时刻要么多个共享引用，要么一个可变引用，不可并存。
-**出处**：[The Book · References and Borrowing](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html)
-**相关页**：[借用与引用](/language-core/borrowing-and-references)
+
+以引用方式使用值而不转移所有权；同一时刻要么多个共享引用 `&T`，要么一个可变引用 `&mut T`。
+
+**出处**：[《The Rust Programming Language》· References and Borrowing](https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html)、[《The Rust Reference》· Visibility and privacy](https://doc.rust-lang.org/reference/visibility-and-privacy.html)
+
+**相关页**：[language-core/borrowing-and-references](/language-core/borrowing-and-references)、[memory-concurrency/interior-mutability](/memory-concurrency/interior-mutability)
 
 ### 切片（Slice）
-对连续内存片段的「指针 + 长度」视图；`&str` 与 `[T]` 切片是其具体形态。
-**出处**：[The Book · The Slice Type](https://doc.rust-lang.org/book/ch04-03-slices.html)
-**相关页**：[切片与 &str](/language-core/slices-and-str)
 
-### 枚举（Enum）
-可在多个互斥变体中取其一的类型，变体可携带数据；`Option` 与 `Result` 是标准库最常用的两枚举。
-**出处**：[The Book · Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)
-**相关页**：[枚举与模式匹配](/language-core/enums-and-pattern-matching)、[错误处理](/language-core/error-handling)
+对连续内存的一段视图，用「指针 + 长度」的胖指针表示，不拥有数据。
 
-### 模式匹配（Pattern Matching）
-`match`、`if let` 等语法按「形状」分解值的机制；编译器强制穷尽所有分支。
-**出处**：[The Book · Patterns and Matching](https://doc.rust-lang.org/book/ch19-00-patterns.html)
-**相关页**：[枚举与模式匹配](/language-core/enums-and-pattern-matching)
+**出处**：[《The Rust Programming Language》· The Slice Type](https://doc.rust-lang.org/book/ch04-03-slices.html)、[std · slice](https://doc.rust-lang.org/std/primitive.slice.html)
 
-### trait（特征）
-定义共享行为的接口，可带默认实现；类型用 `impl Trait for Type` 提供行为。
-**出处**：[The Book · Defining Shared Behavior with Traits](https://doc.rust-lang.org/book/ch10-02-traits.html)
-**相关页**：[trait 与实现](/language-core/traits)
-
-### 泛型（Generics）
-类型参数化：函数与类型对「任意满足约束的类型」写一份代码，编译期展开。
-**出处**：[The Book · Generic Data Types](https://doc.rust-lang.org/book/ch10-01-syntax.html)
-**相关页**：[泛型与单态化](/language-core/generics-and-monomorphization)
-
-### 单态化（Monomorphization）
-编译器把泛型代码替换为实际用到的具体类型实例的过程，运行时零开销但膨胀二进制。
-**出处**：[The Book · Generic Data Types](https://doc.rust-lang.org/book/ch10-01-syntax.html)
-**相关页**：[泛型与单态化](/language-core/generics-and-monomorphization)
+**相关页**：[language-core/slices-and-str](/language-core/slices-and-str)
 
 ### 生命周期（Lifetime）
-引用有效期的静态标注；只描述约束关系，不改变值的实际存活时间，编译期防悬垂引用。
-**出处**：[The Book · Validating References with Lifetimes](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)
-**相关页**：[生命周期](/language-core/lifetimes)
+
+标注引用之间的有效期约束关系；`'static` 表示整个程序期间有效，是 trait 对象的上界要求。
+
+**出处**：[《The Rust Programming Language》· Validating References with Lifetimes](https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html)、[《The Rust Reference》· Trait and lifetime bounds](https://doc.rust-lang.org/reference/trait-bounds.html)
+
+**相关页**：[language-core/lifetimes](/language-core/lifetimes)、[type-system/trait-objects](/type-system/trait-objects)
+
+### 结构体（Struct）
+
+具命或匿名的数据结构；具名字段按名访问，字段可为元组式或具名式。
+
+**出处**：[《The Rust Programming Language》· Defining and Instantiating Structs](https://doc.rust-lang.org/book/ch05-01-defining-structs.html)
+
+**相关页**：[language-core/ownership-and-move](/language-core/ownership-and-move)、[memory-concurrency/smart-pointers](/memory-concurrency/smart-pointers)
+
+### 枚举（Enum）
+
+代数数据类型：每个变体可携带数据，`match` 强制穷尽所有可能路径。
+
+**出处**：[《The Rust Programming Language》· Defining an Enum](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)
+
+**相关页**：[language-core/enums-and-pattern-matching](/language-core/enums-and-pattern-matching)
+
+### 模式匹配（Pattern Matching）
+
+`match`、`if let`、`while let`、`let` 解构与循环中解构的结构化取值机制。
+
+**出处**：[《The Rust Programming Language》· The match Control Flow Construct](https://doc.rust-lang.org/book/ch06-02-match.html)、[《The Rust Programming Language》· Concise Control Flow with if let and let...else](https://doc.rust-lang.org/book/ch06-03-if-let.html)、[《The Rust Programming Language》· All the Places Patterns Can Be Used](https://doc.rust-lang.org/book/ch19-01-all-the-places-for-patterns.html)
+
+**相关页**：[language-core/enums-and-pattern-matching](/language-core/enums-and-pattern-matching)
+
+### trait
+
+定义方法签名与关联项的抽象接口；`impl Trait for Type` 实现行为，trait bound 约束泛型。
+
+**出处**：[《The Rust Programming Language》· Defining Shared Behavior with Traits](https://doc.rust-lang.org/book/ch10-02-traits.html)、[Rust Blog · Abstraction without overhead: traits in Rust](https://blog.rust-lang.org/2015/05/11/traits/)
+
+**相关页**：[language-core/traits](/language-core/traits)、[type-system/associated-types](/type-system/associated-types)
+
+### 泛型与单态化（Generics and Monomorphization）
+
+泛型在编译期为每个具体类型生成一份特化代码，运行时零额外开销。
+
+**出处**：[《The Rust Programming Language》· Generic Types, Traits, and Lifetimes](https://doc.rust-lang.org/book/ch10-00-generics.html)、[《The Rust Programming Language》· Generic Data Types](https://doc.rust-lang.org/book/ch10-01-syntax.html)
+
+**相关页**：[language-core/generics-and-monomorphization](/language-core/generics-and-monomorphization)、[type-system/zero-cost-abstraction](/type-system/zero-cost-abstraction)
 
 ### 错误处理（Error Handling）
-可恢复错误走 `Result<T, E>` 与 `?` 传播，不可恢复错误走 `panic!`；`Option<T>` 表达「可能没有」。
-**出处**：[The Book · Error Handling](https://doc.rust-lang.org/book/ch09-00-error-handling.html)、[std::result](https://doc.rust-lang.org/std/result/)
-**相关页**：[错误处理](/language-core/error-handling)
 
-### 模块与 crate（Module and Crate）
-crate 是编译单元与发布单元，模块控制代码组织与可见性；路径、`mod`、`use` 三件套。
-**出处**：[The Book · Packages, Crates, and Modules](https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html)
-**相关页**：[cargo 常用工作流](/tooling/cargo-workflow)
+`Result` 表达可恢复错误、`Option` 表达有无、`panic!` 表达不可恢复错误；`?` 在函数内向上传播。
 
-## 类型系统
+**出处**：[《The Rust Programming Language》· Error Handling](https://doc.rust-lang.org/book/ch09-00-error-handling.html)、[《The Rust Programming Language》· Recoverable Errors with Result](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html)、[std · Result in std::result](https://doc.rust-lang.org/std/result/enum.Result.html)、[std · Option in std::option](https://doc.rust-lang.org/std/option/enum.Option.html)
 
-### trait 对象（Trait Object）
-`dyn Trait`：数据指针 + vtable 的胖指针，运行时动态分发；与泛型静态分发是体积换性能的取舍。
-**出处**：[The Rust Reference · Trait object types](https://doc.rust-lang.org/reference/types/trait-object.html)
-**相关页**：[trait 对象与动态分发](/type-system/trait-objects)
+**相关页**：[language-core/error-handling](/language-core/error-handling)
 
-### dyn 兼容性（Dyn Compatibility）
-判定一个 trait 能否被做成 trait 对象的规则集合（旧称「对象安全」，object safety）。
-**出处**：[The Rust Reference · Traits（Dyn compatibility 节）](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)
-**相关页**：[trait 对象与动态分发](/type-system/trait-objects)
+### 包与 crate（Package and Crate）
+
+包是构建与发布单元，crate 是编译单元；一个包可含多个 crate（含库与二进制目标）。
+
+**出处**：[《The Rust Programming Language》· Packages and Crates](https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html)、[《The Rust Programming Language》· Control Scope and Privacy with Modules](https://doc.rust-lang.org/book/ch07-02-defining-modules-to-control-scope-and-privacy.html)
+
+**相关页**：[ecosystem/workspace](/ecosystem/workspace)、[ecosystem/publish-crate](/ecosystem/publish-crate)
+
+### Copy trait
+
+标记「按位复制而非 move」的自动 trait；实现 `Copy` 的类型不能同时实现 `Drop`。
+
+**出处**：[std · Copy in std::marker](https://doc.rust-lang.org/std/marker/trait.Copy.html)、[《The Rust Programming Language》· What is Ownership?](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)
+
+**相关页**：[language-core/ownership-and-move](/language-core/ownership-and-move)、[memory-concurrency/drop-and-destructors](/memory-concurrency/drop-and-destructors)
+
+## 类型系统与抽象
+
+### trait 对象（Trait Object / dyn Trait）
+
+以胖指针（数据指针 + vtable）表达「对满足该 trait 的任意类型」的抽象；要求 `'static` 与对象安全。
+
+**出处**：[《The Rust Programming Language》· Using Trait Objects to Abstract over Shared Behavior](https://doc.rust-lang.org/book/ch18-02-trait-objects.html)、[《The Rust Reference》· Traits](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)、[《The Rust Reference》· Trait object types](https://doc.rust-lang.org/reference/types/trait-object.html)
+
+**相关页**：[type-system/trait-objects](/type-system/trait-objects)、[language-core/traits](/language-core/traits)
+
+### 动态分发（Dynamic Dispatch）
+
+运行时经 vtable 查表调用方法，与泛型的静态分发是「体积换性能」的反向取舍。
+
+**出处**：[《The Rust Programming Language》· Performance in Loops vs. Iterators](https://doc.rust-lang.org/book/ch13-04-performance.html)
+
+**相关页**：[type-system/trait-objects](/type-system/trait-objects)、[type-system/zero-cost-abstraction](/type-system/zero-cost-abstraction)
+
+### dyn 兼容性（dyn Compatibility）
+
+一个 trait 能否做成 `dyn Trait` 须满足对象安全：方法不能有泛型、不能 `impl Trait` 返回等。
+
+**出处**：[《The Rust Reference》· Traits](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)、[《The Rust Programming Language》· Using Trait Objects to Abstract over Shared Behavior](https://doc.rust-lang.org/book/ch18-02-trait-objects.html)
+
+**相关页**：[type-system/trait-objects](/type-system/trait-objects)、[type-system/associated-types](/type-system/associated-types)
 
 ### 关联类型（Associated Type）
-trait 内部的类型占位符；一个实现对每个关联类型只给一个具体类型，如 `Iterator::Item`。
-**出处**：[The Rust Reference · Associated items](https://doc.rust-lang.org/reference/items/associated-items.html)
-**相关页**：[associated types](/type-system/associated-types)
 
-### 孤儿规则（Orphan Rule）
-实现必须满足「trait 或类型之一属于当前 crate」，防止依赖图中的实现冲突。
-**出处**：[The Rust Reference · Implementations（Orphan rules 节）](https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules)
-**相关页**：[孤儿规则与 newtype](/type-system/orphan-rule-and-newtype)
+trait 中声明的单一类型占位符，同一实现只有一个 `Item` 之类取值。
 
-### impl Trait
-「不写出具体类型」的静态抽象：参数位置对调用方隐藏类型，返回位置由编译器生成唯一具体类型。
-**出处**：[The Rust Reference · Impl trait type](https://doc.rust-lang.org/reference/types/impl-trait.html)
-**相关页**：[impl Trait](/type-system/impl-trait)
+**出处**：[《The Rust Programming Language》· Advanced Traits](https://doc.rust-lang.org/book/ch20-02-advanced-traits.html)
+
+**相关页**：[type-system/associated-types](/type-system/associated-types)、[language-core/traits](/language-core/traits)
 
 ### 零成本抽象（Zero-cost Abstraction）
-高层抽象不付出额外运行时代价：抽象在编译期消除，只为你用到的部分付账。
-**出处**：[Rust Blog · Abstraction without overhead: traits in Rust](https://blog.rust-lang.org/2015/05/11/traits/)
-**相关页**：[零成本抽象](/type-system/zero-cost-abstraction)
 
-### 闭包（Closure）
-捕获所在环境变量的匿名函数；编译为实现 `Fn`/`FnMut`/`FnOnce` 的类型。
-**出处**：[The Book · Closures](https://doc.rust-lang.org/book/ch13-01-closures.html)
-**相关页**：[闭包与 Fn 家族](/type-system/closures-and-fn-trait-family)
+高层抽象编译后不产生额外运行时开销；traits 的博客原文即以此命名。
+
+**出处**：[Rust Blog · Abstraction without overhead: traits in Rust](https://blog.rust-lang.org/2015/05/11/traits/)、[《The Rust Programming Language》· Performance in Loops vs. Iterators](https://doc.rust-lang.org/book/ch13-04-performance.html)
+
+**相关页**：[type-system/zero-cost-abstraction](/type-system/zero-cost-abstraction)
+
+### 孤儿规则（Orphan Rule）
+
+禁止为「外部 trait + 外部类型」写 impl，保证各 crate 新增实现不冲突（E0117）。
+
+**出处**：[《The Rust Reference》· Implementations](https://doc.rust-lang.org/reference/items/implementations.html#orphan-rules)
+
+**相关页**：[type-system/orphan-rule-and-newtype](/type-system/orphan-rule-and-newtype)
+
+### newtype 模式（Newtype）
+
+用单字段新类型包裹外部类型，既满足孤儿规则又获得额外类型安全。
+
+**出处**：[《The Rust Programming Language》· Advanced Types](https://doc.rust-lang.org/book/ch20-03-advanced-types.html)
+
+**相关页**：[type-system/orphan-rule-and-newtype](/type-system/orphan-rule-and-newtype)
+
+### impl Trait
+
+参数位置等价于匿名泛型参数，编译期静态分发；返回位置隐藏具体类型。
+
+**出处**：[《The Rust Reference》· Impl trait type](https://doc.rust-lang.org/reference/types/impl-trait.html)、[《The Rust Programming Language》· Advanced Functions and Closures](https://doc.rust-lang.org/book/ch20-04-advanced-functions-and-closures.html)
+
+**相关页**：[type-system/impl-trait](/type-system/impl-trait)
+
+### 运算符重载（Operator Overloading）
+
+重写 `std::ops` 中的 `Add`/`Index` 等 trait 即重载对应运算符；`Deref` 驱动自动解引用。
+
+**出处**：[std · std::ops](https://doc.rust-lang.org/std/ops/)、[《The Rust Programming Language》· Treating Smart Pointers Like Regular References](https://doc.rust-lang.org/book/ch15-02-deref.html)、[std · Deref in std::ops](https://doc.rust-lang.org/std/ops/trait.Deref.html)
+
+**相关页**：[type-system/operator-overloading](/type-system/operator-overloading)、[memory-concurrency/smart-pointers](/memory-concurrency/smart-pointers)
+
+### 闭包与 Fn 家族（Closures and Fn Traits）
+
+捕获环境的匿名函数；`Fn` 只读捕获、`FnMut` 可变捕获、`FnOnce` 可能移动捕获，`move` 强制按值捕获。
+
+**出处**：[《The Rust Programming Language》· Closures](https://doc.rust-lang.org/book/ch13-01-closures.html)、[std · Fn in std::ops](https://doc.rust-lang.org/std/ops/trait.Fn.html)、[std · FnMut in std::ops](https://doc.rust-lang.org/std/ops/trait.FnMut.html)、[std · FnOnce in std::ops](https://doc.rust-lang.org/std/ops/trait.FnOnce.html)
+
+**相关页**：[type-system/closures-and-fn-trait-family](/type-system/closures-and-fn-trait-family)
+
+### 类型擦除（Type Erasure）
+
+把异构具体类型藏在同一运行时表示之后；Rust 用 `dyn Trait` + vtable 实现，Java 泛型则在字节码层擦除。
+
+**出处**：[《The Rust Reference》· Trait object types](https://doc.rust-lang.org/reference/types/trait-object.html)、[Java Tutorials · Type Erasure](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html)
+
+**相关页**：[type-system/trait-objects](/type-system/trait-objects)、[comparison/vs-java](/comparison/vs-java)
 
 ## 内存与并发
 
+### 析构与 Drop
+
+值离开作用域时按声明逆序析构；实现 `Drop` 即定制清理逻辑。
+
+**出处**：[《The Rust Programming Language》· Running Code on Cleanup with the Drop Trait](https://doc.rust-lang.org/book/ch15-03-drop.html)、[std · Drop in std::ops](https://doc.rust-lang.org/std/ops/trait.Drop.html)
+
+**相关页**：[memory-concurrency/drop-and-destructors](/memory-concurrency/drop-and-destructors)
+
 ### 智能指针（Smart Pointer）
-带额外元数据与所有权语义的指针类型：`Box`、`Rc`、`RefCell` 等。
-**出处**：[The Book · Smart Pointers](https://doc.rust-lang.org/book/ch15-00-smart-pointers.html)、[std::boxed::Box](https://doc.rust-lang.org/std/boxed/struct.Box.html)
-**相关页**：[智能指针](/memory-concurrency/smart-pointers)
+
+实现 `Deref` 的指针类型；`Box` 堆上唯一所有权，`Rc`/`Arc` 共享计数，`Weak` 不计强引用。
+
+**出处**：[《The Rust Programming Language》· Smart Pointers](https://doc.rust-lang.org/book/ch15-00-smart-pointers.html)、[《The Rust Programming Language》· Using Box&lt;T&gt; to Point to Data on the Heap](https://doc.rust-lang.org/book/ch15-01-box.html)、[std · Box in std::boxed](https://doc.rust-lang.org/std/boxed/struct.Box.html)
+
+**相关页**：[memory-concurrency/smart-pointers](/memory-concurrency/smart-pointers)
+
+### 引用计数（Reference Counting）
+
+`Rc` 单线程、`Arc` 跨线程共享所有权；强引用成环会永不归零，需 `Weak` 破环。
+
+**出处**：[《The Rust Programming Language》· Rc&lt;T&gt;, the Reference Counted Smart Pointer](https://doc.rust-lang.org/book/ch15-04-rc.html)、[《The Rust Programming Language》· Reference Cycles Can Leak Memory](https://doc.rust-lang.org/book/ch15-06-reference-cycles.html)、[std · Arc in std::sync](https://doc.rust-lang.org/std/sync/struct.Arc.html)、[std · Weak in std::sync](https://doc.rust-lang.org/std/sync/struct.Weak.html)
+
+**相关页**：[memory-concurrency/smart-pointers](/memory-concurrency/smart-pointers)
 
 ### 内部可变性（Interior Mutability）
-在仅有共享引用的前提下改变内部状态的规则：借用检查从编译期挪到运行时（`RefCell`）。
-**出处**：[The Book · RefCell&lt;T&gt; and the Interior Mutability Pattern](https://doc.rust-lang.org/book/ch15-05-interior-mutability.html)、[std::cell::RefCell](https://doc.rust-lang.org/std/cell/struct.RefCell.html)
-**相关页**：[内部可变性](/memory-concurrency/interior-mutability)
 
-### Copy（Copy Trait）
-按位复制语义的标记 trait：赋值即复制、离开作用域不执行析构；与 `Drop` 互斥。
-**出处**：[std::marker::Copy](https://doc.rust-lang.org/std/marker/trait.Copy.html)
-**相关页**：[所有权与移动语义](/language-core/ownership-and-move)
+通过 `&self` 修改自身状态，把借用检查推迟到运行时；`Cell` 整体替换值，`RefCell` 运行时借用计数。
 
-### Drop（Drop Trait）
-值离开作用域时执行的析构逻辑；与 RAII 直接对应，`dropck` 约束其借用存活期。
-**出处**：[std::ops::Drop](https://doc.rust-lang.org/std/ops/trait.Drop.html)、[The Rustonomicon · Drop Check](https://doc.rust-lang.org/nomicon/dropck.html)
-**相关页**：[Drop 与析构](/memory-concurrency/drop-and-destructors)
+**出处**：[《The Rust Programming Language》· RefCell&lt;T&gt; and the Interior Mutability Pattern](https://doc.rust-lang.org/book/ch15-05-interior-mutability.html)、[std · Cell in std::cell](https://doc.rust-lang.org/std/cell/struct.Cell.html)、[std · RefCell in std::cell](https://doc.rust-lang.org/std/cell/struct.RefCell.html)
+
+**相关页**：[memory-concurrency/interior-mutability](/memory-concurrency/interior-mutability)
 
 ### Send 与 Sync
-跨线程安全性的标记 trait：`Send` 表示所有权可转移至别的线程，`Sync` 表示共享引用可跨线程使用。
-**出处**：[The Rustonomicon · Send and Sync](https://doc.rust-lang.org/nomicon/send-and-sync.html)、[std::marker::Send](https://doc.rust-lang.org/std/marker/trait.Send.html)
-**相关页**：[Send 与 Sync](/memory-concurrency/send-and-sync)
 
-### Mutex（互斥锁）
-包装共享数据的互斥锁；`lock()` 返回守卫值，作用域结束即解锁，数据被类型系统保护。
-**出处**：[std::sync::Mutex](https://doc.rust-lang.org/std/sync/struct.Mutex.html)
-**相关页**：[无畏并发](/memory-concurrency/threads-and-channels)
+自动 trait，按字段组成推导；`Send` 表示可跨线程移动，`Sync` 表示 `&T` 可跨线程共享。
+
+**出处**：[《The Rust Programming Language》· Extensible Concurrency with Send and Sync](https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html)、[std · Send in std::marker](https://doc.rust-lang.org/std/marker/trait.Send.html)、[std · Sync in std::marker](https://doc.rust-lang.org/std/marker/trait.Sync.html)、[《The Rustonomicon》· Send and Sync](https://doc.rust-lang.org/nomicon/send-and-sync.html)
+
+**相关页**：[memory-concurrency/send-and-sync](/memory-concurrency/send-and-sync)、[memory-concurrency/threads-and-channels](/memory-concurrency/threads-and-channels)
 
 ### 无畏并发（Fearless Concurrency）
-Rust 的并发主张：借用检查与 `Send`/`Sync` 让数据竞争在编译期报错，而不是运行期爆炸。
-**出处**：[The Book · Fearless Concurrency](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
-**相关页**：[无畏并发](/memory-concurrency/threads-and-channels)
 
-### 未定义行为（Undefined Behavior）
-Rust 安全代码不会触发的语言级未定义行为集合；只有 unsafe 代码可能踩到。
-**出处**：[The Rust Reference · Behavior considered undefined](https://doc.rust-lang.org/reference/behavior-considered-undefined.html)
-**相关页**：[Rust vs C/C++](/comparison/vs-ccpp)
+所有权与类型系统在编译期排除数据竞争，使跨线程编程无需人工加锁推理。
 
-### 自定义分配器（Global Allocator）
-实现 `GlobalAlloc` 接口接管全局内存分配；`#[global_allocator]` 指定实例。
-**出处**：[std::alloc::GlobalAlloc](https://doc.rust-lang.org/std/alloc/trait.GlobalAlloc.html)
-**相关页**：[自定义分配器](/memory-concurrency/custom-allocator)
+**出处**：[《The Rust Programming Language》· Fearless Concurrency](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
+
+**相关页**：[memory-concurrency/threads-and-channels](/memory-concurrency/threads-and-channels)
+
+### 线程与消息传递（Threads and Message Passing）
+
+`std::thread` 起线程，`mpsc` channel 传数据；发送即转移所有权。
+
+**出处**：[《The Rust Programming Language》· Using Threads to Run Code Simultaneously](https://doc.rust-lang.org/book/ch16-01-threads.html)、[《The Rust Programming Language》· Transfer Data Between Threads with Message Passing](https://doc.rust-lang.org/book/ch16-02-message-passing.html)、[std · std::thread](https://doc.rust-lang.org/std/thread/index.html)、[std · std::sync::mpsc](https://doc.rust-lang.org/std/sync/mpsc/index.html)
+
+**相关页**：[memory-concurrency/threads-and-channels](/memory-concurrency/threads-and-channels)
+
+### 共享状态（Shared State）
+
+跨线程共享可变状态用 `Mutex`/`RwLock`；守卫对象与 guard 同生命周期绑定。
+
+**出处**：[《The Rust Programming Language》· Shared-State Concurrency](https://doc.rust-lang.org/book/ch16-03-shared-state.html)、[std · Mutex in std::sync](https://doc.rust-lang.org/std/sync/struct.Mutex.html)、[std · RwLock in std::sync](https://doc.rust-lang.org/std/sync/struct.RwLock.html)
+
+**相关页**：[memory-concurrency/threads-and-channels](/memory-concurrency/threads-and-channels)
+
+### 原子类型（Atomics）
+
+`std::sync::atomic` 提供无锁的整数原子操作与内存序控制。
+
+**出处**：[std · std::sync::atomic](https://doc.rust-lang.org/std/sync/atomic/index.html)、[《The Rust Programming Language》· Extensible Concurrency with Send and Sync](https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html)
+
+**相关页**：[memory-concurrency/send-and-sync](/memory-concurrency/send-and-sync)
+
+### unsafe 与未定义行为（Unsafe and UB）
+
+`unsafe` 解锁五类编译器无法验证的操作；Reference 明确定义了「未定义行为」清单。
+
+**出处**：[《The Rust Programming Language》· Unsafe Rust](https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html)、[《The Rust Reference》· The unsafe keyword](https://doc.rust-lang.org/reference/unsafe-keyword.html)、[《The Rust Reference》· Behavior considered undefined](https://doc.rust-lang.org/reference/behavior-considered-undefined.html)、[《The Rustonomicon》· Introduction](https://doc.rust-lang.org/nomicon/)
+
+**相关页**：[ecosystem/ffi-c-interop](/ecosystem/ffi-c-interop)、[memory-concurrency/custom-allocator](/memory-concurrency/custom-allocator)
 
 ## 异步
 
-### Future（Future Trait）
-异步计算的核心抽象：`poll` 推进状态机，`Pending` 让出、`Ready` 交付。
-**出处**：[std::future::Future](https://doc.rust-lang.org/std/future/trait.Future.html)
-**相关页**：[async/await 与 Future](/async/async-await-and-future)
+### Future
 
-### async/await
-`async fn`/`async` 块把代码编译为实现 `Future` 的状态机；`await` 挂起直到就绪。
-**出处**：[《Asynchronous Programming in Rust》官方书](https://rust-lang.github.io/async-book/)
-**相关页**：[async/await 与 Future](/async/async-await-and-future)
+代表一个将来可能完成的计算；`poll` 返回 `Ready(T)` 或 `Pending`，不 poll 就不会推进。
+
+**出处**：[std · Future in std::future](https://doc.rust-lang.org/std/future/trait.Future.html)、[《The Rust Programming Language》· Futures and the Async Syntax](https://doc.rust-lang.org/book/ch17-01-futures-and-syntax.html)
+
+**相关页**：[async/async-await-and-future](/async/async-await-and-future)
+
+### async / await
+
+`async fn` 构造 Future，`await` 是一次挂起-恢复的状态转移，不阻塞线程。
+
+**出处**：[《The Rust Programming Language》· Futures and the Async Syntax](https://doc.rust-lang.org/book/ch17-01-futures-and-syntax.html)、[《The Rust Programming Language》· Applying Concurrency with Async](https://doc.rust-lang.org/book/ch17-02-concurrency-with-async.html)
+
+**相关页**：[async/async-await-and-future](/async/async-await-and-future)
 
 ### 执行器（Executor）
-驱动 Future 完成的调度循环：唤醒入队、轮询推进；Rust 只定抽象不定实现。
-**出处**：[《Asynchronous Programming in Rust》· Applied: Build an Executor](https://rust-lang.github.io/async-book/02_execution/04_executor.html)
-**相关页**：[执行器与运行时](/async/executors-and-runtime)
 
-### Pin（钉住）
-`std::pin`：保证值在移动后位置不变，是自引用 Future 安全存在的前提。
-**出处**：[std 标准库 · std::pin](https://doc.rust-lang.org/std/pin/index.html)
-**相关页**：[Pin 与自引用](/async/pin-and-self-reference)
+反复调用 `poll` 驱动 Future 的那层代码；`block_on` 即最简单的执行器。
+
+**出处**：[async-book · Applied: Build an Executor](https://rust-lang.github.io/async-book/02_execution/04_executor.html)、[std · std::task](https://doc.rust-lang.org/std/task/index.html)
+
+**相关页**：[async/executors-and-runtime](/async/executors-and-runtime)
+
+### Waker
+
+唤醒注册表句柄：执行器在 Future 返回 `Pending` 后用它安排再次 poll。
+
+**出处**：[std · Waker in std::task](https://doc.rust-lang.org/std/task/struct.Waker.html)、[async-book · Runtimes](https://rust-lang.github.io/async-book/part-guide/runtimes.html)
+
+**相关页**：[async/executors-and-runtime](/async/executors-and-runtime)、[async/pin-and-self-reference](/async/pin-and-self-reference)
+
+### Pin 与自引用（Pin and Self-Referential）
+
+`Pin` 保证被指向的值不会被移动，async 状态机由此安全；`Unpin` 类型不受约束。
+
+**出处**：[std · std::pin](https://doc.rust-lang.org/std/pin/index.html)、[async-book · Concurrent programming](https://rust-lang.github.io/async-book/part-guide/concurrency.html)
+
+**相关页**：[async/pin-and-self-reference](/async/pin-and-self-reference)
+
+### select 与协作式取消（Select and Cancellation）
+
+`select!` 命中一个分支即丢弃其余分支，是协作式取消的基础。
+
+**出处**：[Tokio · Select | Tokio](https://tokio.rs/tokio/tutorial/select)
+
+**相关页**：[async/select-and-cancellation](/async/select-and-cancellation)
+
+### 多线程运行时（Multi-threaded Runtime）
+
+Tokio 等运行时用工作线程池并行 poll 任务，需开启 `Send` 约束。
+
+**出处**：[Tokio · Shared state | Tokio](https://tokio.rs/tokio/tutorial/shared-state)、[Tokio · Spawning | Tokio](https://tokio.rs/tokio/tutorial/spawning)
+
+**相关页**：[async/tokio-ecosystem](/async/tokio-ecosystem)、[async/executors-and-runtime](/async/executors-and-runtime)
 
 ### Tokio
-Rust 生态最主流的异步运行时：执行器、定时器、IO 驱动与任务协作工具的集合。
-**出处**：[Tokio 官方教程](https://tokio.rs/tokio/tutorial)
-**相关页**：[tokio 生态](/async/tokio-ecosystem)
 
-## 工具链与生态
+事实标准的异步运行时，提供 `spawn`、定时器、同步原语与 channel。
+
+**出处**：[Tokio · Tutorial | Tokio](https://tokio.rs/tokio/tutorial)、[Tokio · Channels | Tokio](https://tokio.rs/tokio/tutorial/channels)、[Tokio · Streams | Tokio](https://tokio.rs/tokio/tutorial/streams)
+
+**相关页**：[async/tokio-ecosystem](/async/tokio-ecosystem)
+
+### 异步中的 trait（Traits for Async）
+
+`async fn` in trait 与 `trait_variant` 让异步方法可被泛型与 trait 对象使用。
+
+**出处**：[《The Rust Programming Language》· A Closer Look at the Traits for Async](https://doc.rust-lang.org/book/ch17-05-traits-for-async.html)、[《The Rust RFC Book》· 3185-static-async-fn-in-trait](https://rust-lang.github.io/rfcs/3185-static-async-fn-in-trait.html)
+
+**相关页**：[async/async-send-and-async-trait](/async/async-send-and-async-trait)、[language-core/traits](/language-core/traits)
+
+## 宏
+
+### 声明宏（Declarative Macros / macro_rules!）
+
+按 token 匹配改写代码的编译期宏，不引入运行时抽象。
+
+**出处**：[《The Rust Programming Language》· Macros](https://doc.rust-lang.org/book/ch20-05-macros.html)、[《The Rust Reference》· Macros by example](https://doc.rust-lang.org/reference/macros-by-example.html)
+
+**相关页**：[macros/declarative-macros](/macros/declarative-macros)
+
+### 过程宏（Procedural Macros）
+
+以 Rust 代码实现的编译器插件，运行在编译期，能解析任意 token 流。
+
+**出处**：[《The Rust Reference》· Procedural macros](https://doc.rust-lang.org/reference/procedural-macros.html)、[《The Rust Programming Language》· Generic Data Types](https://doc.rust-lang.org/book/ch10-01-syntax.html)
+
+**相关页**：[macros/proc-macros](/macros/proc-macros)
+
+## 工具链与工程
 
 ### Cargo
-Rust 的构建系统与包管理器：依赖解析、构建脚本、测试基准、发布一条龙。
-**出处**：[The Cargo Book](https://doc.rust-lang.org/cargo/)
-**相关页**：[cargo 常用工作流](/tooling/cargo-workflow)
 
-### Workspace（工作空间）
-共享一份锁文件与 `target/` 的多 crate 工程；路径依赖自动成为成员。
-**出处**：[The Cargo Book · Workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html)
-**相关页**：[workspace 与多 crate 工程](/ecosystem/workspace)
+官方构建与依赖管理工具，统一了构建、测试、文档、发布全流程。
 
-### crate 发布（Publishing）
-`cargo publish` 把 crate 发布到 crates.io；路径依赖需先补版本号。
-**出处**：[The Cargo Book · Publishing on crates.io](https://doc.rust-lang.org/cargo/reference/publishing.html)
-**相关页**：[发布 crate 到 crates.io](/ecosystem/publish-crate)
+**出处**：[《Cargo Book》· Introduction](https://doc.rust-lang.org/cargo/)、[《Cargo Book》· cargo build](https://doc.rust-lang.org/cargo/commands/cargo-build.html)
+
+**相关页**：[tooling/cargo-workflow](/tooling/cargo-workflow)
 
 ### rustup
-官方工具链安装器：多版本 Rust、组件与目标三元组管理。
-**出处**：[The rustup book](https://rust-lang.github.io/rustup/)
-**相关页**：[rustup 与 MSRV](/tooling/rustup-msrv)
+
+官方工具链管理器，负责安装与切换 toolchain、component 与 target。
+
+**出处**：[rustup book · Introduction](https://rust-lang.github.io/rustup/)、[rustup book · Toolchains](https://rust-lang.github.io/rustup/concepts/toolchains.html)、[rustup book · Components](https://rust-lang.github.io/rustup/concepts/components.html)
+
+**相关页**：[tooling/rustup-msrv](/tooling/rustup-msrv)
+
+### rustfmt
+
+官方格式化工具，配置项由 `rustfmt.toml` 或 `.rustfmt.toml` 提供。
+
+**出处**：[rustfmt](https://rust-lang.github.io/rustfmt/)、[rustfmt · Configurations.md](https://github.com/rust-lang/rustfmt/blob/master/Configurations.md)
+
+**相关页**：[tooling/rustfmt-style](/tooling/rustfmt-style)
 
 ### Clippy
-官方 lint 工具：500+ 条规则捕捉惯用法偏差与常见错误。
-**出处**：[Clippy 官方 lint 列表](https://rust-lang.github.io/rust-clippy/master/)
-**相关页**：[clippy 与 lint](/tooling/clippy-lints)
 
-### Rustfmt
-官方代码格式化工具：风格争议交给工具，review 只看逻辑。
-**出处**：[Rustfmt 官方文档](https://rust-lang.github.io/rustfmt/)
-**相关页**：[rustfmt 与代码风格](/tooling/rustfmt-style)
+官方 lint 集合，覆盖风格、易错写法与代码异味，`clone_on_copy`、`ptr_arg` 等是高频命中项。
+
+**出处**：[《Cargo Book》· cargo clippy](https://doc.rust-lang.org/cargo/commands/cargo-clippy.html)、[Clippy Lints · clone_on_copy](https://rust-lang.github.io/rust-clippy/master/index.html#clone_on_copy)、[Clippy Lints · ptr_arg](https://rust-lang.github.io/rust-clippy/master/index.html#ptr_arg)、[Clippy Lints · cognitive_complexity](https://rust-lang.github.io/rust-clippy/master/index.html#cognitive_complexity)
+
+**相关页**：[tooling/clippy-lints](/tooling/clippy-lints)
 
 ### rust-analyzer
-官方推荐的 LSP 实现：跳转、补全、内联错误、宏展开都靠它。
-**出处**：[rust-analyzer 官网](https://rust-analyzer.github.io/)
-**相关页**：[rust-analyzer 与编辑器](/tooling/rust-analyzer-editor)
+
+官方推荐的 LSP 语言服务器，提供补全、跳转与内联诊断。
+
+**出处**：[rust-analyzer](https://rust-analyzer.github.io/)
+
+**相关页**：[tooling/rust-analyzer-editor](/tooling/rust-analyzer-editor)
+
+### 测试与文档（Cargo Test and Doc Test）
+
+`cargo test` 跑单测与文档测试，`cargo doc` 生成文档并验证示例代码。
+
+**出处**：[《Cargo Book》· cargo test](https://doc.rust-lang.org/cargo/commands/cargo-test.html)、[《Cargo Book》· cargo doc](https://doc.rust-lang.org/cargo/commands/cargo-doc.html)
+
+**相关页**：[tooling/cargo-workflow](/tooling/cargo-workflow)
+
+### workspace
+
+共享同一 `Cargo.lock` 与 target 目录的多个包，统一依赖与构建。
+
+**出处**：[《The Rust Programming Language》· Cargo Workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html)、[《Cargo Book》· Workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html)
+
+**相关页**：[ecosystem/workspace](/ecosystem/workspace)
+
+### crates.io 发布（Publishing to crates.io）
+
+`cargo publish` 打包上传；发布前需填写包元数据并通过文档与测试检查。
+
+**出处**：[《The Rust Programming Language》· Publishing a Crate to Crates.io](https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html)、[《Cargo Book》· Publishing on crates.io](https://doc.rust-lang.org/cargo/reference/publishing.html)、[《Cargo Book》· cargo publish](https://doc.rust-lang.org/cargo/commands/cargo-publish.html)、[docs.rs](https://docs.rs/)
+
+**相关页**：[ecosystem/publish-crate](/ecosystem/publish-crate)
 
 ### 交叉编译（Cross Compilation）
-为目标三元组编译：`--target` 指定平台，链接器与 sysroot 另配。
-**出处**：[The rustc book · Platform Support](https://doc.rust-lang.org/rustc/platform-support.html)
-**相关页**：[交叉编译](/memory-concurrency/cross-compilation)、[交叉编译实战](/tooling/cross-compilation-practice)
 
-### FFI（Foreign Function Interface）
-与其他语言互操作的边界：`extern` 声明、`#[no_mangle]` 导出、谁分配谁释放。
-**出处**：[The Rustonomicon · FFI](https://doc.rust-lang.org/nomicon/ffi.html)
-**相关页**：[FFI 与 C 互操作](/ecosystem/ffi-c-interop)
+通过 target  triples 为其他架构编译；标准库 target 由 rustup 组件安装。
 
-### no_std 与嵌入式（Embedded）
-无标准库的运行环境：`#![no_std]` 搭配 `core`/`alloc`，面向 MCU 与裸机。
-**出处**：[The Embedded Rust Book](https://docs.rust-embedded.org/book/)
-**相关页**：[嵌入式 Rust](/ecosystem/embedded-nostd)
+**出处**：[rustc book · Platform Support](https://doc.rust-lang.org/rustc/platform-support.html)、[《The Rust Programming Language》· 附录 G · How Rust is Made and “Nightly Rust”](https://doc.rust-lang.org/book/appendix-07-nightly-rust.html)
 
-### WebAssembly（Wasm）
-浏览器与宿主环境运行 Rust 的目标平台；`wasm-bindgen` 桥接 JS。
-**出处**：[《Rust and WebAssembly》官方书](https://rustwasm.github.io/docs/book/)
-**相关页**：[WebAssembly](/ecosystem/wasm)
+**相关页**：[memory-concurrency/cross-compilation](/memory-concurrency/cross-compilation)、[tooling/cross-compilation-practice](/tooling/cross-compilation-practice)
 
-## 相关页面
+### edition
 
-- [知识点整理](./knowledge.md)——全站复习主线，术语在这里逐条展开。
+语言版本的兼容层：一套代码按 edition 切换语义，便于演进而不破坏存量代码。
+
+**出处**：[《The Rust Edition Guide》· Introduction](https://doc.rust-lang.org/edition-guide/)、[《The Rust Programming Language》· 附录 E · Editions](https://doc.rust-lang.org/book/appendix-05-editions.html)
+
+**相关页**：[tooling/rustup-msrv](/tooling/rustup-msrv)、[type-system/closures-and-fn-trait-family](/type-system/closures-and-fn-trait-family)
+
+## 生态与跨语言
+
+### no_std
+
+不使用标准库的可选环境，替代项由 `core`/`alloc` 与自行提供的 `#[global_allocator]` 承担。
+
+**出处**：[Embedded Book · Introduction](https://docs.rust-embedded.org/book/intro/index.html)、[std · GlobalAlloc in std::alloc](https://doc.rust-lang.org/std/alloc/trait.GlobalAlloc.html)
+
+**相关页**：[ecosystem/embedded-nostd](/ecosystem/embedded-nostd)、[memory-concurrency/custom-allocator](/memory-concurrency/custom-allocator)
+
+### FFI 与 C 互操作（FFI and C Interop）
+
+`extern "C"` 声明 ABI，`unsafe` 转换所有权；Nomicon 给出实践规约。
+
+**出处**：[《The Rustonomicon》· FFI](https://doc.rust-lang.org/nomicon/ffi.html)、[《The Rust Programming Language》· Unsafe Rust](https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html)
+
+**相关页**：[ecosystem/ffi-c-interop](/ecosystem/ffi-c-interop)
+
+### WebAssembly
+
+以无 GC、小体积为目标的编译目标；wasm-bindgen 负责与 JS 互操作。
+
+**出处**：[《Rust and WebAssembly》· Introduction](https://rustwasm.github.io/docs/book/)、[wasm-pack Book](https://rustwasm.github.io/docs/wasm-pack/)
+
+**相关页**：[ecosystem/wasm](/ecosystem/wasm)
+
+### 全局分配器（Global Allocator）
+
+程序堆分配的入口；实现 `GlobalAlloc` 并标注 `#[global_allocator]` 即可整体替换。
+
+**出处**：[std · GlobalAlloc in std::alloc](https://doc.rust-lang.org/std/alloc/trait.GlobalAlloc.html)
+
+**相关页**：[memory-concurrency/custom-allocator](/memory-concurrency/custom-allocator)
+
+### 移动语义与析构对照（Move Semantics versus Others）
+
+Rust 编译期确定析构点，C++ 需 RAII 约定，Go 依赖 GC——三者的资源回收模型直接决定程序形态。
+
+**出处**：[《The Rust Programming Language》· What is Ownership?](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html)、[Go 官方文档 · Effective Go](https://go.dev/doc/effective_go)
+
+**相关页**：[comparison/vs-ccpp](/comparison/vs-ccpp)、[comparison/vs-go](/comparison/vs-go)
+
+### 文档系统（Documentation）
+
+`///` 文档注释写入 rustdoc，Markdown 与 doctest 双用；Rust By Example 提供可运行示例。
+
+**出处**：[Rust By Example · Introduction](https://doc.rust-lang.org/rust-by-example/)、[《Cargo Book》· cargo doc](https://doc.rust-lang.org/cargo/commands/cargo-doc.html)
+
+**相关页**：[tooling/cargo-workflow](/tooling/cargo-workflow)

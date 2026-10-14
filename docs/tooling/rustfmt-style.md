@@ -158,3 +158,4 @@ cargo fmt --check
 - [cargo 常用工作流](./cargo-workflow)——`cargo fmt` 是 cargo 的子命令。
 - [clippy 与 lint](./clippy-lints)——格式化之后的下一道静态检查。
 - [rust-analyzer 与编辑器](./rust-analyzer-editor)——编辑器保存时自动调用 rustfmt。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

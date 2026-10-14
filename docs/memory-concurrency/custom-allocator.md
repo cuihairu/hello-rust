@@ -181,3 +181,4 @@ static GLOBAL: Jemalloc = Jemalloc;
 - [所有权与移动语义](../language-core/ownership-and-move)——分配的内存何时释放，由所有权决定。
 - [Drop 与析构](./drop-and-destructors)——释放路径的另一半。
 - [交叉编译](./cross-compilation)——wasm 等 no_std 目标正是自定义分配器的主场。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

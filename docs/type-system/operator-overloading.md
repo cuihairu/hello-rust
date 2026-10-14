@@ -133,3 +133,4 @@ len via Deref = 3
 - [闭包与 `Fn` 家族](./closures-and-fn-trait-family)——调用运算符 `()` 的重载机制。
 - [孤儿规则与 newtype](./orphan-rule-and-newtype)——`Deref` 补救方法丢失的权衡。
 - [trait 与实现](../language-core/traits)——运算 trait 也是普通 trait。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

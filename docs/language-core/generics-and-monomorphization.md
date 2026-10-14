@@ -99,4 +99,5 @@ fn main() {
 
 - [trait 与实现](./traits)——`impl Trait` 是泛型参数的语法糖。
 - [所有权与移动语义](./ownership-and-move)——泛型函数里值的 move 规则不变。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。
 - [知识点整理](../knowledge)——全站复习主线。

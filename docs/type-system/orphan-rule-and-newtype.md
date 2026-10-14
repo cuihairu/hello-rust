@@ -161,3 +161,4 @@ For more information about this error, try `rustc --explain E0599`.
 - [trait 与实现](../language-core/traits)——impl 的基本规则，孤儿规则的入门提及。
 - [零成本抽象](./zero-cost-abstraction)——newtype 为什么不增加运行时开销。
 - [运算符重载](./operator-overloading)——`Deref` 补救「方法丢失」的办法。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

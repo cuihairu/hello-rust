@@ -196,3 +196,4 @@ let bindings = bindgen::Builder::default()
 - [workspace 与多 crate 工程](./workspace)——多 crate 组织。
 - [语言核心](../language-core/)——`unsafe` 与裸指针。
 - [语言对照](../comparison/)——Rust 与 C 的逐项差异。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

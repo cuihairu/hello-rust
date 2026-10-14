@@ -183,3 +183,4 @@ Rust 侧实测（`rustc r8_result_question.rs`）输出 `Ok(42)` 与 `Err(ParseI
 - [所有权与移动语义](../language-core/ownership-and-move)——Rust 内存模型的根基。
 - [生命周期](../language-core/lifetimes)——引用有效期的标注规则。
 - [泛型与单态化](../language-core/generics-and-monomorphization)——trait bound 与单态化细节。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

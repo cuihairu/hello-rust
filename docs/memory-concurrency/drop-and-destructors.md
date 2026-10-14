@@ -194,3 +194,4 @@ Inspector drop: hello
 - [所有权与移动语义](../language-core/ownership-and-move)——drop 发生在所有权语义的地基上。
 - [智能指针](./smart-pointers)——`Box`/`Rc`/`Arc` 的释放都由 `Drop` 实现。
 - [无畏并发](./threads-and-channels)——锁的释放同样靠 drop（RAII 守卫）。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

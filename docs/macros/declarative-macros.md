@@ -199,4 +199,5 @@ fn main() {
 ## 相关页面
 
 - [trait 与实现](../language-core/traits)——`derive` 是宏生成 `impl` 的特例。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。
 - [知识点整理](../knowledge)——全站复习主线。

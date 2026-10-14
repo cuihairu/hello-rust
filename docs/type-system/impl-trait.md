@@ -197,3 +197,4 @@ edition 2024 起这条规则放宽：RPIT 默认捕获作用域内**所有**生�
 - [闭包与 `Fn` 家族](./closures-and-fn-trait-family)——`impl Fn` 里的 `Fn` 到底是什么。
 - [trait 对象](./trait-objects)——`Box<dyn Trait>` 路线的完整对比。
 - [关联类型](./associated-types)——`impl Iterator<Item = i32>` 的语法解读。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

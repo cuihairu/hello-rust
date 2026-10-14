@@ -140,3 +140,4 @@ $ file target/wasm32-unknown-unknown/release/hello.wasm
 - [自定义分配器](./custom-allocator)——wasm/no_std 目标的运行时支撑。
 - [Send 与 Sync](./send-and-sync)——跨平台并发代码的线程安全前提。
 - [工具链全景](../tooling/)——rustup、cargo 的更多实践。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

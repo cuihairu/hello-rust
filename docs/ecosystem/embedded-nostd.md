@@ -148,3 +148,4 @@ Embassy 与 RTIC 都是运行时，区别在并发模型：Embassy 用 async 任
 - [WebAssembly](./wasm)——同为无 OS 目标的另一分支。
 - [异步](../async/)——Embassy 的 async 基础。
 - [memory-concurrency](../memory-concurrency/)——`UnsafeCell` 与内部可变性。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

@@ -151,3 +151,4 @@ error: could not compile `msrv-demo` (bin "msrv-demo") due to 1 previous error
 - [cargo 常用工作流](./cargo-workflow)——`Cargo.toml` 与 `Cargo.lock`。
 - [rust-analyzer 与编辑器](./rust-analyzer-editor)——rust-analyzer 作为 rustup 组件安装。
 - [交叉编译实战](./cross-compilation-practice)——`rustup target add` 安装 target。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

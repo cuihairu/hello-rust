@@ -119,3 +119,4 @@ error[E0515]: cannot return reference to local variable `s`
 - [所有权与移动语义](./ownership-and-move)——借用是 move 的替代方案。
 - [生命周期](./lifetimes)——跨函数传递引用时的标注。
 - [trait 与实现](./traits)——`&self` / `&mut self` 是 trait 方法的常见接收者。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

@@ -189,3 +189,4 @@ counter = 4
 - [无畏并发](./threads-and-channels)——`spawn`/channel/锁的使用全景。
 - [智能指针](./smart-pointers)——`Rc` 与 `Arc` 的差异源头。
 - [内部可变性](./interior-mutability)——`Cell`/`RefCell` 为什么不是 `Sync`。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

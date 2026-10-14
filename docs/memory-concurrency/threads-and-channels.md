@@ -199,3 +199,4 @@ data = [11, 12, 13]
 - [Send 与 Sync](./send-and-sync)——`spawn` 边界 `F: Send + 'static` 的原理。
 - [交叉编译](./cross-compilation)——多平台构建这些线程程序。
 - [async 生态](../async/)——线程之外的第二条并发路线。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

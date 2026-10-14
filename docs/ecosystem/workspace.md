@@ -127,3 +127,4 @@ serde json: {"x":3,"y":4}
 - [发布 crate 到 crates.io](./publish-crate)——路径依赖与发布的冲突。
 - [工具链](../tooling/)——cargo 与 rustup 的日常用法。
 - [语言核心](../language-core/)——crate 与模块系统。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

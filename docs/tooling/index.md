@@ -13,4 +13,5 @@ cargo、rustfmt、clippy、rust-analyzer、rustup 与 MSRV 策略——Rust 工�
 
 - [生态与工程](../ecosystem/) —— workspace 与发布。
 - [宏](../macros/) —— 宏展开调试。
+- [术语表](../glossary) —— 全站核心术语的中英对照与权威出处。
 - [知识点整理](../knowledge) —— 全站复习主线。

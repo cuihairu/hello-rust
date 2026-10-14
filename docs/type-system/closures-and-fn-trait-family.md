@@ -146,3 +146,4 @@ second call -> 42
 - [关联类型](./associated-types)——`FnOnce::Output` 描述返回值类型。
 - [所有权与 move](../language-core/ownership-and-move)——捕获与 `move` 的语义根基。
 - [trait 与实现](../language-core/traits)——`Fn` 家族就是三个普通 trait。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

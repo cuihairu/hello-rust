@@ -153,3 +153,4 @@ spawn_blocking 结果: 30
 - [执行器与运行时](./executors-and-runtime)——tokio runtime 的调度模型。
 - [select 与超时取消](./select-and-cancellation)——`tokio::select!` 与 `CancellationToken`。
 - [async 中的 Send 问题与 async trait](./async-send-and-async-trait)——`Send` 问题的完整讨论。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

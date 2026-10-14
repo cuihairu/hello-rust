@@ -29,7 +29,8 @@ export default defineConfig({
       { text: '工具链', link: '/tooling/' },
       { text: '生态与工程', link: '/ecosystem/' },
       { text: '语言对照', link: '/comparison/' },
-      { text: '知识点整理', link: '/knowledge' }
+      { text: '知识点整理', link: '/knowledge' },
+      { text: '术语表', link: '/glossary' }
     ],
 
     sidebar: sidebar as never,

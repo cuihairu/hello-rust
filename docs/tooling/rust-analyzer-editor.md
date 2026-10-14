@@ -137,3 +137,4 @@ rust-analyzer 自身 `documentFormattingProvider` 可用——它内部调用 ru
 - [rustfmt 与代码风格](./rustfmt-style)——rust-analyzer 的格式化后端。
 - [clippy 与 lint](./clippy-lints)——`check.command = "clippy"` 接入编辑器。
 - [rustup 与 MSRV](./rustup-msrv)——rust-analyzer 作为 rustup 组件安装。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

@@ -99,3 +99,4 @@ fn describe(n: i32) -> &'static str {
 - [错误处理](./error-handling)——`Option` 与 `Result` 都是两变体枚举。
 - [trait 与实现](./traits)——`derive(Debug)` 等派生宏为枚举生成 trait 实现。
 - [所有权与移动语义](./ownership-and-move)——match 分支里值的 move 语义。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

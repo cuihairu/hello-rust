@@ -99,3 +99,4 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 - [枚举与模式匹配](./enums-and-pattern-matching)——`Option` 与 `Result` 都是枚举。
 - [trait 与实现](./traits)——`Error` trait 与 `From` 转换。
 - [所有权与移动语义](./ownership-and-move)——错误值本身也遵循 move 规则。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

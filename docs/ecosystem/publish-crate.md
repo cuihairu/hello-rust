@@ -145,3 +145,4 @@ Caused by:
 - [workspace 与多 crate 工程](./workspace)——路径依赖在 workspace 内自动成为成员。
 - [工具链](../tooling/)——cargo 常用工作流。
 - [语言核心](../language-core/)——crate 与模块系统。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。

@@ -174,3 +174,4 @@ target/aarch64-unknown-linux-musl/debug/cross-demo: ELF 64-bit LSB executable, A
 - [rustup 与 MSRV](./rustup-msrv)——`rustup target add` 与组件管理。
 - [cargo 常用工作流](./cargo-workflow)——`cargo build` 与产物目录。
 - [宏](../macros/)——过程宏在交叉编译中的注意点。
+- [术语表](../glossary)——全站核心术语的中英对照与权威出处。
