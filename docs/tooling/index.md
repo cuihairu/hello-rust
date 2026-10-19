@@ -1,4 +1,4 @@
-# 第6部分：工具链
+# 工具链
 
 cargo、rustfmt、clippy、rust-analyzer、rustup 与 MSRV 策略——Rust 工程的日常工具面。
 

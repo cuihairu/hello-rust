@@ -1,4 +1,4 @@
-# 第7部分：生态与工程
+# 生态与工程
 
 把 Rust 代码变成可交付的工程产物：多 crate 组织、crates.io 发布、C 互操作、嵌入式裸机与 WebAssembly。
 

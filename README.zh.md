@@ -2,7 +2,7 @@
 
 <img src="logo.svg" width="64" height="64">
 
-Rust 知识手册：所有权、借用、生命周期、trait、泛型、异步、宏与工具链。
+个人 Rust 学习笔记、实验与心得，从游戏开发者视角记录所有权、借用、生命周期、trait、异步、宏与工具链。
 
 **在线阅读**：<https://cuihairu.github.io/hello-rust/>
 
@@ -26,24 +26,26 @@ npm run docs:preview  # 本地预览构建产物
 ```
 docs/
 ├── index.md            # 首页
-├── knowledge.md        # 知识图谱（复习主线）
-├── language-core/      # 第1部分 语言核心（所有权/借用/生命周期/trait/泛型/枚举与模式匹配/错误处理）
-├── type-system/        # 第2部分 类型系统与抽象
-├── memory-concurrency/ # 第3部分 内存与并发
-├── async/              # 第4部分 异步
-├── macros/             # 第5部分 宏
-├── tooling/            # 第6部分 工具链
-├── ecosystem/          # 第7部分 生态与工程
-├── comparison/         # 第8部分 与其他语言对照
+├── knowledge.md        # 知识地图
+├── glossary.md         # 术语表
+├── review/             # 结构与内容审计记录
+├── language-core/      # 语言核心（所有权/借用/生命周期/trait/泛型/枚举与模式匹配/错误处理）
+├── type-system/        # 类型系统与抽象
+├── memory-concurrency/ # 内存与并发
+├── async/              # 异步
+├── macros/             # 宏
+├── tooling/            # 工具链
+├── ecosystem/          # 生态与工程
+├── comparison/         # 与其他语言对照
 ├── .vitepress/
 │   ├── config.mts      # 站点配置（base / 导航 / 搜索 / 死链门禁）
 │   └── sidebar.json    # 侧边栏（全站页面的唯一 slug 清单）
 └── public/             # favicon / logo（与根目录同一 logo.svg）
-OUTLINE.md              # 知识地图，勾选状态即内容进度
+OUTLINE.md              # 历史写作规划；站点导航以 sidebar.json 为准
 todo.md                 # 巡检台账：未完成项 / 已完成项与 commit 证据
 ```
 
-每个部分的入口是该目录下的 `index.md`（导览页）。
+每个主题的入口是该目录下的 `index.md`（主题概览）。侧栏链接与顺序只维护在 `docs/.vitepress/sidebar.json`；修改导航时不要在 OUTLINE.md 另维护一份清单。
 
 ## 写作口径
 

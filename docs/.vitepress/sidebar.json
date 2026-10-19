@@ -1,6 +1,6 @@
 [
   {
-    "text": "第1部分：语言核心",
+    "text": "语言核心",
     "link": "/language-core/",
     "collapsed": true,
     "items": [
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "text": "第2部分：类型系统与抽象",
+    "text": "类型系统与抽象",
     "link": "/type-system/",
     "collapsed": true,
     "items": [
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "text": "第3部分：内存与并发",
+    "text": "内存与并发",
     "link": "/memory-concurrency/",
     "collapsed": true,
     "items": [
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "text": "第4部分：异步",
+    "text": "异步",
     "link": "/async/",
     "collapsed": true,
     "items": [
@@ -57,7 +57,7 @@
     ]
   },
   {
-    "text": "第5部分：宏",
+    "text": "宏",
     "link": "/macros/",
     "collapsed": true,
     "items": [
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "text": "第6部分：工具链",
+    "text": "工具链",
     "link": "/tooling/",
     "collapsed": true,
     "items": [
@@ -79,7 +79,7 @@
     ]
   },
   {
-    "text": "第7部分：生态与工程",
+    "text": "生态与工程",
     "link": "/ecosystem/",
     "collapsed": true,
     "items": [
@@ -91,7 +91,7 @@
     ]
   },
   {
-    "text": "第8部分：与其他语言对照",
+    "text": "与其他语言对照",
     "link": "/comparison/",
     "collapsed": true,
     "items": [

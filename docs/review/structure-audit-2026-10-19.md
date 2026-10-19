@@ -96,3 +96,38 @@
 1. **先装依赖并重跑 `npm run docs:build`**，取得当前死链/构建事实（审计不能用历史 `todo.md` 记录替代）。
 2. **保持主题目录和 URL 不动**，为交叉编译“概念 vs 实战”及通用 Send/Sync vs async Send 补边界说明与双向链接。
 3. **统一侧栏展示标签的大小写与中英术语风格**，保留第1—8阅读顺序，并让目录主题分类继续作为唯一内容归属轴。
+
+## 2026-10-19 收口执行记录
+
+以下记录覆盖本次 A→B→C 收口；如与上文建议冲突，以本节实际执行结果为准。
+
+### A：导航真源与重复侧栏项
+
+- 权威源为 `docs/.vitepress/sidebar.json`，由 `docs/.vitepress/config.mts:2,36` 导入并配置。仓库无 `SUMMARY.md`。
+- `OUTLINE.md:1-7` 已声明它是历史写作规划，不是导航；导航入口、链接与顺序只在 sidebar 维护，并说明勾选不代表学习进度。
+- 同一侧栏 55 个目标经 JSON 递归计数，重复路由 **0**；没有删除跨侧栏复用。
+
+### B：跨主题重复分组与文本证据
+
+本次逐组核对结果：**收敛真重复 0 组；保留并互链的不同角度 2 组**。没有为了收敛删页。
+
+| 组别 | 分类 | 第一处证据 | 第二处证据 | 处理 |
+|---|---|---|---|---|
+| 交叉编译 | 不同角度心得 | `docs/memory-concurrency/cross-compilation.md:3` 聚焦 target triple、标准库/linker 与构建原理 | `docs/tooling/cross-compilation-practice.md:3` 聚焦本机 x86_64 环境实测、命令与产物 | 两篇保留，分别添加指向对方的角度说明（前者 `:5`，后者 `:5`） |
+| Send 与 Sync / async Send | 不同角度心得 | `docs/memory-concurrency/send-and-sync.md:3` 聚焦一般类型自动推导、线程安全与 `unsafe impl` | `docs/async/async-send-and-async-trait.md:3` 聚焦 Future 跨 `.await` 的 Send 和 async trait | 两篇保留，分别添加互链和范围说明（前者 `:5`，后者 `:5`） |
+
+对比判据：同主题词不足以判真重复；上述两组的正文对象、问题边界及结论不同。`docs/knowledge.md` 保留结论速览并链接正文，是明确的摘要索引，不再复制完整论证。
+
+### C：目录、标签与页面口径
+
+- `README.md:4` 与 `README.zh.md:4` 定位为游戏开发者视角的个人笔记、实验与心得；两份目录树补列实际存在的 `glossary.md` 与 `review/`，不再把八个主题标成第 1—8 部分。
+- README 的主题入口说明分别见 `README.md:48`、`README.zh.md:48`；OUTLINE 的历史规划用途与 sidebar 唯一维护规则见 `OUTLINE.md:3-7`。
+- 侧栏主题标签见 `docs/.vitepress/sidebar.json:3,18,33,47,60,69,82,94`，移除课程式“第 N 部分”；8 个主题 `index.md` 的 H1 同步改为主题名。`docs/type-system/index.md:1-3` 和 `docs/memory-concurrency/index.md:1-3` 的过期“规划中”列表已移除。
+- `docs/knowledge.md:3` 将“复习主线”改为个人知识地图，明确不规定阅读顺序。
+- 侧栏 dead target：0；重要总览 `docs/knowledge.md` 已在顶栏配置（`docs/.vitepress/config.mts:22-34`），首页继续由站点根路由承载。
+
+### 验收证据
+
+- `pnpm docs:build`：通过（VitePress 1.6.4，rendering pages 完成）。VitePress 配置 `ignoreDeadLinks: false`，本次构建的 dead-link gate 通过，死链计数 **0**。
+- 侧栏链接：55 项，重复目标 **0**，不存在目标 **0**。
+- 删除 Markdown 数：**0**（`git diff --diff-filter=D --name-only` 计数；提交后相对于 HEAD 的工作树仍为 0）。

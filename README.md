@@ -2,7 +2,7 @@
 
 <img src="logo.svg" width="64" height="64">
 
-Rust knowledge base: ownership, borrowing, lifetimes, traits, generics, async, macros and tooling.
+Personal Rust notes, experiments and lessons from a game developer's perspective: ownership, borrowing, lifetimes, traits, async, macros and tooling.
 
 **Read online**: <https://cuihairu.github.io/hello-rust/>
 
@@ -26,24 +26,26 @@ npm run docs:preview  # preview the built site
 ```
 docs/
 ├── index.md            # home
-├── knowledge.md        # knowledge map (review track)
-├── language-core/      # Part 1  Language core (ownership, borrowing, lifetimes, traits, generics, enums, errors)
-├── type-system/        # Part 2  Type system & abstraction
-├── memory-concurrency/ # Part 3  Memory & concurrency
-├── async/              # Part 4  Async
-├── macros/             # Part 5  Macros
-├── tooling/            # Part 6  Tooling
-├── ecosystem/          # Part 7  Ecosystem & engineering
-├── comparison/         # Part 8  Rust vs C/C++/Go/Java
+├── knowledge.md        # knowledge map
+├── glossary.md         # terminology reference
+├── review/             # structure and content review notes
+├── language-core/      # Language core (ownership, borrowing, lifetimes, traits, generics, enums, errors)
+├── type-system/        # Type system & abstraction
+├── memory-concurrency/ # Memory & concurrency
+├── async/              # Async
+├── macros/             # Macros
+├── tooling/            # Tooling
+├── ecosystem/          # Ecosystem & engineering
+├── comparison/         # Rust vs C/C++/Go/Java
 ├── .vitepress/
 │   ├── config.mts      # site config (base / nav / search / dead-link gate)
 │   └── sidebar.json    # sidebar — the single slug list for all pages
 └── public/             # favicon / logo (same logo.svg)
-OUTLINE.md              # knowledge map; checkboxes track progress
+OUTLINE.md              # historical writing plan; navigation source is sidebar.json
 todo.md                 # audit ledger: open items / done items with commit evidence
 ```
 
-Each part starts with its own `index.md` (guide page).
+Each topic starts with its own `index.md` (topic overview). Sidebar order and links are maintained only in `docs/.vitepress/sidebar.json`.
 
 ## Writing rules
 
