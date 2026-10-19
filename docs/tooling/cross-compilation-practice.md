@@ -2,6 +2,8 @@
 
 交叉编译是在 x86_64 主机上编译出 aarch64、Windows、wasm 等其他平台二进制的能力。Rust 自带交叉编译支持：装上 target 标准库、配好链接器，`cargo build --target` 就能出产物。本页记录本环境（x86_64 Linux，rustc 1.99.0）实际跑通的步骤与产物验证。
 
+这里记录本机命令、产物与验证边界；target triple 和标准库/linker 的概念说明见[交叉编译](../memory-concurrency/cross-compilation)。两篇分别是环境实测与概念拆解。
+
 ## rustup target add
 
 每个 target 需要单独安装标准库。本环境已预装多个 target：

@@ -2,6 +2,8 @@
 
 线程安全在 Rust 里不是文档约定，而是两个自动 trait 的编译期事实：`Send`（值可以安全地**转移**到别的线程）与 `Sync`（引用可以安全地**共享**给别的线程）。核心知识点：**它们的推导规则与真实报错**，以及**`unsafe impl` 的动机与代价**。
 
+本页讨论一般类型如何满足线程安全边界；async future 跨 `.await` 持有数据时的 `Send` 约束及其修复，见[async 中的 Send 问题与 async trait](../async/async-send-and-async-trait)。
+
 ## 自动 trait 与推导规则
 
 两者都是标记 trait（marker，无方法），由编译器按字段/成员**自动推导**：一个 struct 的所有字段都是 `Send`，它就是 `Send`。规则浓缩成三句：

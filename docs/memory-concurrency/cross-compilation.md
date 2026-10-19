@@ -2,6 +2,8 @@
 
 Rust 的"一次编译，多平台发布"不靠虚拟机：rustc 自带几百个 target，`cargo build --target <triple>` 直接产出目标平台的二进制。核心知识点：**target triple 的结构与查询**，以及**真实的交叉构建全流程（含 linker 配置）**——本页所有命令与输出均为本环境（rustc 1.99.0，x86_64 Linux 宿主）实测。
 
+本页侧重 target triple、标准库/linker 关系和多平台构建原理；本机逐 target 的命令、产物与限制记录见[交叉编译实战](../tooling/cross-compilation-practice)。两页视角不同，互为补充。
+
 ## target triple：arch-vendor-os-env
 
 每个 target 是四段式的 triple：`x86_64-unknown-linux-gnu` = 架构-供应商-操作系统-环境（glibc）；环境段换成 `musl` 即静态 libc，`windows-gnu` 即 MinGW。查全部内置 target（真实输出）：

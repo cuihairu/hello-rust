@@ -2,6 +2,8 @@
 
 异步代码有两个绕不开的约束：跨 `await` 的数据必须 `Send`（因为任务可能被移到别的线程），以及 trait 里的 `async fn` 有 dyn 兼容性问题。这一页用真实报错和对比示例把这两个问题讲清楚。
 
+这里聚焦 Future 状态机跨 `.await` 的 `Send` 要求与 async trait；一般类型的 `Send`/`Sync` 自动推导和 `unsafe impl` 安全承诺，见[Send 与 Sync](../memory-concurrency/send-and-sync)。
+
 > 本环境已成功获取 tokio 1.53.2 与 async-trait 0.1.92，以下示例均为真实编译运行。
 
 ## 跨 await 持有锁导致 !Send
