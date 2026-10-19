@@ -1,6 +1,9 @@
-# Hello Rust 知识点目录（OUTLINE）
+# Hello Rust 写作规划记录（OUTLINE）
 
-> 本站点的知识地图与页面规划。写作会话按本表逐页产出，每完成一页把状态改为 `[x]`。
+> 本文件保留早期写作规划与完成记录，**不是站点导航或学习路线**。页面入口与显示顺序以 [`docs/.vitepress/sidebar.json`](docs/.vitepress/sidebar.json) 为准；不要在这里维护第二份页面清单。新增、改名或调整页面后，只更新 sidebar，再由 README/主题入口链接到它。
+>
+> 这里的勾选状态只表示规划事项的历史完成情况，不表示课程进度或推荐学习顺序。
+>
 > 参考姊妹仓 hello-postgresql / hello-golang 的结构与写作口径（中文正文、每页一到两个核心知识点、代码示例 `rustc`/`cargo` 真跑）。
 
 ---
