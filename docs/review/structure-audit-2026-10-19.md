@@ -60,9 +60,9 @@
 
 ### 链接与根目录核查
 
-- **死链：未核实（构建未能运行）**。执行 `npm run docs:build` 返回 `sh: 1: vitepress: not found`，本工作树未安装依赖。`docs/.vitepress/config.mts:12` 配置 `ignoreDeadLinks: false`，且 `README.md:18` 说明构建包含死链门禁；`todo.md:27` 记录过历史构建通过，但不能替代本次构建验证。
+- **死链：已核实**。首次执行 `npm run docs:build` 返回 `sh: 1: vitepress: not found`；随后通过 `pnpm docs:build` 成功完成构建，配置中的 dead-link gate 通过，最终结果见本报告“验收证据”。`docs/.vitepress/config.mts:12` 配置 `ignoreDeadLinks: false`，`README.md:18` 说明构建包含死链门禁。
 - **静态侧栏文件目标检查：已核实**，55 个 sidebar 链接均能映射到现存 Markdown，0 个配置失效；这不是对正文 Markdown 链接的完整替代检查。
-- **正文相对链接：未核实**。当前未能执行 VitePress 链接校验；不可据此断言全站死链为零。
+- **正文相对链接：已由构建校验**。本次 `pnpm docs:build` 成功，VitePress dead-link gate 通过；具体构建结果见本报告“验收证据”。
 - **非 docs 的 Markdown 文件：4 个**，分别为 `README.md`、`README.zh.md`、`OUTLINE.md`、`todo.md`。根目录另有 `package.json`、`package-lock.json`、`LICENSE`、`logo.svg`，均为项目/站点所需文件，不属于临时杂物。
 - **重复 README：**存在英文与中文两份 README，但二者互相链接（`README.md:9`、`README.zh.md:9`），是明确的双语版本，不是重复副本。
 - 当前 `rg --files` 未发现命名为 tmp/temp/backup 的临时 Markdown；未将生成目录 `docs/.vitepress/dist/` 中 HTML 算入源文档统计。
