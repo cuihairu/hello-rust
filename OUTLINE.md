@@ -1,8 +1,8 @@
 # Hello Rust 写作规划记录（OUTLINE）
 
-> 本文件保留早期写作规划与完成记录，**不是站点导航或学习路线**。页面入口与显示顺序以 [`docs/.vitepress/sidebar.json`](docs/.vitepress/sidebar.json) 为准；不要在这里维护第二份页面清单。新增、改名或调整页面后，只更新 sidebar，再由 README/主题入口链接到它。
+> 本文件保留早期写作规划与完成记录，不作为站点导航。页面入口与显示顺序以 [`docs/.vitepress/sidebar.json`](docs/.vitepress/sidebar.json) 为准；不要在这里维护第二份页面清单。新增、改名或调整页面后，只更新 sidebar，再由 README/主题入口链接到它。
 >
-> 这里的勾选状态只表示规划事项的历史完成情况，不表示课程进度或推荐学习顺序。
+> 这里的勾选状态只表示规划事项的历史完成情况，不代表页面阅读顺序。
 >
 > 参考姊妹仓 hello-postgresql / hello-golang 的结构与写作口径（中文正文、每页一到两个核心知识点、代码示例 `rustc`/`cargo` 真跑）。
 
@@ -61,7 +61,7 @@
 - [x] clippy 与 lint（常用 lint 族、deny 警告、自定义配置）
 - [x] rust-analyzer 与编辑器（IDE 功能、rustup component）
 - [x] rustup 与工具链管理（stable/nightly、component、MSRV 策略）
-- [x] 交叉编译实战（target add、cargo build --target、cross 工具）
+- [x] 交叉编译命令与产物记录（target add、cargo build --target、cross 工具）
 
 ## 第 7 部分：生态与工程 ecosystem（P3）
 

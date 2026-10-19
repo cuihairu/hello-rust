@@ -2,7 +2,7 @@
 
 <img src="logo.svg" width="64" height="64">
 
-Personal Rust notes, experiments and lessons from a game developer's perspective: ownership, borrowing, lifetimes, traits, async, macros and tooling.
+Rust notes and experiments drawn from game development: ownership, borrowing, lifetimes, traits, async, macros and tooling, with the bugs and tradeoffs I ran into along the way.
 
 **Read online**: <https://cuihairu.github.io/hello-rust/>
 

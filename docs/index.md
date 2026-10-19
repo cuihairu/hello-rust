@@ -3,17 +3,17 @@ layout: home
 
 hero:
   name: Hello Rust
-  text: Rust 知识手册
-  tagline: 从所有权、借用与生命周期，到 trait、泛型、错误处理，再到内存与并发、异步、宏、工具链与生态工程，系统掌握 Rust。
+  text: 游戏开发者的 Rust 笔记
+  tagline: 记录我在项目与实验中遇到的 Rust 问题、验证过程和取舍，覆盖语言核心、类型系统、并发、异步、宏与工程生态。
   image:
     src: /logo.svg
     alt: hello-rust logo
   actions:
     - theme: brand
-      text: 开始阅读
+      text: 浏览笔记
       link: /language-core/
     - theme: alt
-      text: 知识点整理
+      text: 项目笔记索引
       link: /knowledge
     - theme: alt
       text: 术语表
@@ -35,6 +35,6 @@ features:
     details: cargo、rustfmt、clippy、rust-analyzer、MSRV 策略；workspace、发布 crates、FFI、嵌入式、wasm。
   - title: 跨语言对照
     details: 与 C/C++、Go、Java 在内存安全、错误处理、并发模型、构建系统上的逐项差异表。
-  - title: 术语表
+  - title: 术语索引
     details: 六十条核心术语的中英对照、一句话定义与实测可点的官方出处，按八个部分分组。
 ---

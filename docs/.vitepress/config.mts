@@ -5,7 +5,7 @@ import sidebar from './sidebar.json'
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Hello Rust',
-  description: 'Rust 知识手册——语言核心、类型系统、内存与并发、异步、宏、工具链、生态工程与跨语言对照',
+  description: '游戏开发者的 Rust 笔记与实测——语言核心、类型系统、内存与并发、异步、宏、工具链、生态工程与跨语言对照',
   base: '/hello-rust/',
   cleanUrls: true,
   lastUpdated: true,
@@ -29,7 +29,7 @@ export default defineConfig({
       { text: '工具链', link: '/tooling/' },
       { text: '生态与工程', link: '/ecosystem/' },
       { text: '语言对照', link: '/comparison/' },
-      { text: '知识点整理', link: '/knowledge' },
+      { text: '项目笔记索引', link: '/knowledge' },
       { text: '术语表', link: '/glossary' }
     ],
 

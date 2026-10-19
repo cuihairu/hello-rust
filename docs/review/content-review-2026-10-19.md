@@ -27,8 +27,8 @@ SUMMARY 精简检查不适用：仓库没有 `SUMMARY.md`，且没有发生同�
 
 **结论：**README 的目录枚举与实际目录一致；“个人笔记/游戏开发者视角”改写没有改变 Rust 技术含义。结构审计报告有两处可证实的问题，已修复并推送。
 
-- README 前后对比：`README.zh.md` 原第 5 行称“Rust 知识手册”，现为 [README.zh.md:5](../../README.zh.md:5)“个人 Rust 学习笔记、实验与心得，从游戏开发者视角记录……”。英文对应为 [README.md:5](../../README.md:5)。变化是内容定位，不涉及某项 Rust 特性的支持/限制；逐条检查本批改写句，未发现技术含义反转。
-- 目录数字核对：两份 README 的目录树见 [README.zh.md:26-45](../../README.zh.md) 与 [README.md:26-45](../../README.md)。实际有 8 个主题目录，另有 `review/`、`.vitepress/`、`public/`；内容 Markdown 为 54 篇主题组文件（8 个 index + 46 篇正文）及根目录 3 篇，共 57 篇。审计记录目录中另有结构审计和本复核两篇，因此目前 `docs/` 下总数为 59 篇。README 没有声称文档篇数或总目录数，目录列项均存在。
+- README 前后对比：`README.zh.md` 原第 5 行称“Rust 知识手册”，现为 `README.zh.md:5`“个人 Rust 学习笔记、实验与心得，从游戏开发者视角记录……”。英文对应为 `README.md:5`。变化是内容定位，不涉及某项 Rust 特性的支持/限制；逐条检查本批改写句，未发现技术含义反转。
+- 目录数字核对：两份 README 的目录树见 `README.zh.md:26-45` 与 `README.md:26-45`。实际有 8 个主题目录，另有 `review/`、`.vitepress/`、`public/`；内容 Markdown 为 54 篇主题组文件（8 个 index + 46 篇正文）及根目录 3 篇，共 57 篇。审计记录目录中另有结构审计和本复核两篇，因此目前 `docs/` 下总数为 59 篇。README 没有声称文档篇数或总目录数，目录列项均存在。
 - **问题 1（中）：**结构审计报告旧版 `docs/review/structure-audit-2026-10-19.md` 第 28 行把“46 篇正文”误写成“46 篇组内 Markdown（含 8 篇 index）”，且第 3、20、49 行的统计口径未排除 review 报告，存在漏计/口径不一致。现 [结构审计报告:3,20,28,49](./structure-audit-2026-10-19.md) 明确不计 `docs/review/`，修正为 54 篇主题文件、57 篇内容文档、8,377 行。**已修：`ad47432` Correct structure audit counts。**
 - **问题 2（中）：**该审计报告旧第 63、65 行称构建失败且正文链接未核实，旧第 131 行却称 `pnpm docs:build` 通过、死链为 0，结论冲突。现 [结构审计报告:63-65,131](./structure-audit-2026-10-19.md) 说明先 npm 失败、后 pnpm 成功，并统一标为构建门禁已核实。**已修：`7e6a10d` Resolve audit verification status conflict。**
 

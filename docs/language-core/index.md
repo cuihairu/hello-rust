@@ -15,4 +15,4 @@
 
 - [类型系统](../type-system/) —— trait 对象、associated types、零成本抽象。
 - [术语表](../glossary) —— 全站核心术语的中英对照与权威出处。
-- [知识点整理](../knowledge) —— 全站复习主线。
+- [项目笔记索引](../knowledge) —— 全站要点索引。
