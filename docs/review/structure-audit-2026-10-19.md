@@ -1,6 +1,6 @@
 # hello-rust 目录与内容组织审计（2026-10-19）
 
-审计范围：仓库当前工作树；只新增本报告，未修改现有文档或配置。统计口径：`docs/` 下递归 `.md` 文件（不计 `.vitepress/dist` 生成物）；行数按文件换行分行统计，末尾换行计入一行。路径均相对仓库根目录。
+审计范围：仓库当前工作树；只新增本报告，未修改现有文档或配置。下表统计的是内容文档，不计审计记录所在的 `docs/review/`，也不计 `.vitepress/dist` 生成物；路径均相对仓库根目录。行数按文件换行分行统计，末尾换行计入一行。
 
 ## 量化事实
 
@@ -16,8 +16,8 @@
 | memory-concurrency | 8 | 1,342 |
 | tooling | 7 | 1,057 |
 | type-system | 9 | 1,364 |
-| docs 根目录（index、knowledge、glossary） | 3 | 651 |
-| **合计** | **57** | **8,430** |
+| docs 根目录（index、knowledge、glossary） | 3 | 648 |
+| **合计** | **57** | **8,377** |
 
 ### 组织轴盘点
 
@@ -25,7 +25,7 @@
 
 | 组织轴/位置 | 条目数 | 命名规律 | 有无编号 | 编号连续性 |
 |---|---:|---|---|---|
-| 主题目录：`docs/{language-core,type-system,memory-concurrency,async,macros,tooling,ecosystem,comparison}/` | 8 个主题组、46 篇组内 Markdown（含 8 篇 index） | kebab-case 英文 slug；主题各自目录；各目录有 `index.md` | 文件/目录名没有数字前缀 | 不适用；没有编号文件序列 |
+| 主题目录：`docs/{language-core,type-system,memory-concurrency,async,macros,tooling,ecosystem,comparison}/` | 8 个主题组、54 篇组内 Markdown（8 篇 index + 46 篇正文） | kebab-case 英文 slug；主题各自目录；各目录有 `index.md` | 文件/目录名没有数字前缀 | 不适用；没有编号文件序列 |
 | 部分序：`docs/.vitepress/sidebar.json` | 8 个编号部分，55 个链接（8 个组入口 + 46 个组内条目 + 术语表 1 项） | 中文“第N部分：主题”标签，目标指向主题目录；另有未编号术语表 | 有，编号只存在导航显示标签 | 第1—第8连续，无缺号、重号；证据：`docs/.vitepress/sidebar.json:3-106` |
 | 页面角色惯例（非独立轴） | 8 篇主题 `index.md` + 根级首页/知识点整理/术语表 | `index.md` 为各主题导读；根级页面用语义名 | 无 | 不适用 |
 
@@ -46,7 +46,7 @@
 | 配置了但文件不存在 | 0 | 无 |
 | 文件存在但未进入侧边栏 | 2 | `docs/index.md`（站点首页，通常由首页路由承载）；`docs/knowledge.md`（已在顶栏配置，见 `docs/.vitepress/config.mts:22-34`） |
 
-首页与知识整理页不在侧栏并不自动构成遗漏；这是导航分工。其余主题页、各主题入口和术语表均能由侧栏链接到。检查证据：`docs/.vitepress/sidebar.json:1-108`、`docs/.vitepress/config.mts:22-36`，以及 57 篇文档清单。
+首页与知识整理页不在侧栏并不自动构成遗漏；这是导航分工。其余主题页、各主题入口和术语表均能由侧栏链接到。检查证据：`docs/.vitepress/sidebar.json:1-108`、`docs/.vitepress/config.mts:22-36`，以及 57 篇内容文档清单（不含审计记录）。
 
 ### 问题清单（含严重度与证据）
 
