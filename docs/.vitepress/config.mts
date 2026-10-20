@@ -3,6 +3,9 @@ import sidebar from './sidebar.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  // review/ holds raw archival records (pasted tool logs); not site pages and
+  // their relative links resolve outside the doc root, so keep them out.
+  srcExclude: ['review/**'],
   lang: 'zh-CN',
   title: 'Hello Rust',
   description: '游戏开发者的 Rust 笔记与实测——语言核心、类型系统、内存与并发、异步、宏、工具链、生态工程与跨语言对照',
