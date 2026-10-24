@@ -1,0 +1,38 @@
+[
+  {
+    "text": "Language Core",
+    "link": "/language-core/"
+  },
+  {
+    "text": "Type Systems & Abstractions",
+    "link": "/type-system/"
+  },
+  {
+    "text": "Memory & Concurrency",
+    "link": "/memory-concurrency/"
+  },
+  {
+    "text": "Async",
+    "link": "/async/"
+  },
+  {
+    "text": "Macros",
+    "link": "/macros/"
+  },
+  {
+    "text": "Toolchain",
+    "link": "/tooling/"
+  },
+  {
+    "text": "Ecosystem & Engineering",
+    "link": "/ecosystem/"
+  },
+  {
+    "text": "Comparing with Other Languages",
+    "link": "/comparison/"
+  },
+  {
+    "text": "Glossary",
+    "link": "/glossary"
+  }
+]

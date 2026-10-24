@@ -1,9 +1,9 @@
-# 类型系统与抽象
+# Type System & Abstraction
 
-trait 对象与动态分发、泛型约束与 where 子句、associated types、零成本抽象——Rust 表达「多种类型、一套行为」的方式。
+Trait objects and dynamic dispatch, generic bounds and where clauses, associated types, zero-cost abstraction — how Rust expresses "many types, one set of behaviour".
 
 ---
 
-- [语言核心](../language-core/) —— 地基：所有权、借用、生命周期、trait 入门。
-- [内存与并发](../memory-concurrency/) —— 所有权在并发与智能指针上的延伸。
-- [术语表](../glossary) —— 全站核心术语的中英对照与权威出处。
+- [Language Core](../language-core/) — the foundations: ownership, borrowing, lifetimes, an intro to traits.
+- [Memory & Concurrency](../memory-concurrency/) — ownership extended to concurrency and smart pointers.
+- [Glossary](../glossary) — Chinese–English pairs and authoritative sources for every core term on the site.

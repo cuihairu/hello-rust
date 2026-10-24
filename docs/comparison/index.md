@@ -1,15 +1,15 @@
-# 与其他语言对照
+# Comparing with Other Languages
 
-用「同一段逻辑、两边各跑一遍」的实测，对照 Rust 与 C/C++、Go、Java 在内存安全、错误处理、并发模型、泛型语义、构建系统与生态定位上的差异。结论以实测输出与官方文档为准。
+"Same logic, run it on both sides" measurements comparing Rust against C/C++, Go and Java on memory safety, error handling, concurrency models, generic semantics, build systems and ecosystem positioning. Conclusions follow the measured output and the official docs.
 
-- [Rust vs C/C++](vs-ccpp.md) —— 越界访问/悬垂指针在 Rust 编译期被拦下，在 C 里是 UB 或段错误；泛型与模板的检查时机差异；数据竞争编译期禁止 vs UB；cargo vs CMake；`Result` vs 返回码/异常。
-- [Rust vs Go](vs-go.md) —— goroutine 与 tokio task 同处百万级但调度模型不同；`Result` + `?` 与 `if err != nil` 的错误处理对照；Go 默认静态链接 vs Rust 动态链接 libc；并发 GC vs 所有权；Go 1.18 泛型与 Rust trait bound。
-- [Rust vs Java](vs-java.md) —— GC vs 所有权；`List<Integer>` 与 `List<Double>` 在 Java 运行时同类、Rust 是两种类型；NPE vs `Option`；默认虚调用 vs 显式 `dyn`；JMM 数据竞争「定义良好但不可预测」vs Rust 编译期禁止。
-- [速查总表](cheatsheet-table.md) —— 按维度汇总：所有权/生命周期、错误处理、并发、内存管理、多态、宏/元编程、构建与依赖、类型系统、生态定位、学习曲线，每格标注依据类型。
+- Rust vs C/C++ — out-of-bounds access and dangling pointers are caught at compile time in Rust, but are UB or a segfault in C; when generics and templates are checked; data races forbidden at compile time versus UB; cargo vs CMake; `Result` versus return codes and exceptions.
+- Rust vs Go — goroutines and tokio tasks at the same million-order of magnitude but different scheduling models; error handling of `Result` + `?` against `if err != nil`; Go's default static linking versus Rust's dynamic libc linking; concurrent GC versus ownership; Go 1.18 generics versus Rust trait bounds.
+- Rust vs Java — GC versus ownership; `List<Integer>` and `List<Double>` being the same type at Java runtime but two distinct types in Rust; NPE versus `Option`; default virtual dispatch versus explicit `dyn`; the JMM's "well-defined but unpredictable" data races versus Rust's compile-time prohibition.
+- Quick Comparison Table — by dimension: ownership and lifetimes, error handling, concurrency, memory management, polymorphism, macros and metaprogramming, build and dependencies, the type system, ecosystem positioning and learning curve, with each cell marked by the kind of evidence behind it.
 
 ---
 
-- [语言核心](../language-core/) —— 所有权、借用、生命周期等基础概念。
-- [异步与并发](../async/) —— Rust 侧 async/await 的完整语义。
-- [术语表](../glossary) —— 全站核心术语的中英对照与权威出处。
-- [项目笔记索引](../knowledge) —— 全站要点索引。
+- [Language Core](../language-core/) — foundations: ownership, borrowing, lifetimes.
+- [Async](../async/) — the full semantics of Rust's async/await.
+- [Glossary](../glossary) — Chinese–English pairs and authoritative sources for every core term on the site.
+- [Notes Index](../knowledge) — index of key points across the site.

@@ -1,17 +1,17 @@
-# 工具链
+# Toolchain
 
-cargo、rustfmt、clippy、rust-analyzer、rustup 与 MSRV 策略——Rust 工程的日常工具面。
+cargo, rustfmt, clippy, rust-analyzer, rustup and MSRV policy — the everyday tool surface of Rust engineering.
 
-- [cargo 常用工作流](cargo-workflow.md) —— new/build/run/test/check、Cargo.toml 与 Cargo.lock、特性开关与依赖树。
-- [rustfmt 与代码风格](rustfmt-style.md) —— 默认规则、rustfmt.toml 常见项、CI 里的 `cargo fmt --check`。
-- [clippy 与 lint](clippy-lints.md) —— lint 三级、常用 lint 族、clippy.toml 与真实 lint 输出。
-- [rust-analyzer 与编辑器](rust-analyzer-editor.md) —— LSP 能力、inlay hints 实测、与 rustfmt/clippy 联动。
-- [rustup 与 MSRV](rustup-msrv.md) —— 三通道切换、组件管理、`rust-version` 字段与 edition 2024 差异。
-- [交叉编译：本机命令与产物记录](cross-compilation-practice.md) —— `rustup target add`、musl 静态链接、`cross` 容器与产物验证。
+- Everyday cargo Workflows — new/build/run/test/check, Cargo.toml and Cargo.lock, feature flags and the dependency tree.
+- rustfmt and Code Style — default rules, common rustfmt.toml keys, `cargo fmt --check` in CI.
+- clippy and Lints — the three lint levels, common lint families, clippy.toml and real lint output.
+- rust-analyzer and Editors — LSP features, measured inlay hints, integration with rustfmt/clippy.
+- rustup and MSRV — switching channels, managing components, the `rust-version` field and edition 2024 differences.
+- Cross-Compilation: Local Commands and Artifact Records — `rustup target add`, musl static linking, `cross` containers and verifying the artifacts.
 
 ---
 
-- [生态与工程](../ecosystem/) —— workspace 与发布。
-- [宏](../macros/) —— 宏展开调试。
-- [术语表](../glossary) —— 全站核心术语的中英对照与权威出处。
-- [项目笔记索引](../knowledge) —— 全站要点索引。
+- [Ecosystem & Engineering](../ecosystem/) — workspace and publishing.
+- [Macros](../macros/) — debugging macro expansion.
+- [Glossary](../glossary) — Chinese–English pairs and authoritative sources for every core term on the site.
+- [Notes Index](../knowledge) — index of key points across the site.
