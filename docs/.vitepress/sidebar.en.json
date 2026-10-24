@@ -1,35 +1,105 @@
 [
   {
     "text": "Language Core",
-    "link": "/language-core/"
+    "link": "/language-core/",
+    "collapsed": true,
+    "items": [
+      { "text": "Ownership and Move Semantics", "link": "/language-core/ownership-and-move" },
+      { "text": "Borrowing and References", "link": "/language-core/borrowing-and-references" },
+      { "text": "Slices and &str", "link": "/language-core/slices-and-str" },
+      { "text": "Lifetimes", "link": "/language-core/lifetimes" },
+      { "text": "Enums and Pattern Matching", "link": "/language-core/enums-and-pattern-matching" },
+      { "text": "Traits and Implementations", "link": "/language-core/traits" },
+      { "text": "Generics and Monomorphization", "link": "/language-core/generics-and-monomorphization" },
+      { "text": "Error Handling", "link": "/language-core/error-handling" }
+    ]
   },
   {
     "text": "Type Systems & Abstractions",
-    "link": "/type-system/"
+    "link": "/type-system/",
+    "collapsed": true,
+    "items": [
+      { "text": "Trait Objects and Dynamic Dispatch", "link": "/type-system/trait-objects" },
+      { "text": "Generic Bounds and where Clauses", "link": "/type-system/generic-constraints-and-where" },
+      { "text": "Associated Types", "link": "/type-system/associated-types" },
+      { "text": "Zero-Cost Abstraction", "link": "/type-system/zero-cost-abstraction" },
+      { "text": "The Orphan Rule and Newtype", "link": "/type-system/orphan-rule-and-newtype" },
+      { "text": "impl Trait", "link": "/type-system/impl-trait" },
+      { "text": "Operator Overloading", "link": "/type-system/operator-overloading" },
+      { "text": "Closures and the Fn Trait Family", "link": "/type-system/closures-and-fn-trait-family" }
+    ]
   },
   {
     "text": "Memory & Concurrency",
-    "link": "/memory-concurrency/"
+    "link": "/memory-concurrency/",
+    "collapsed": true,
+    "items": [
+      { "text": "Drop and Destructors", "link": "/memory-concurrency/drop-and-destructors" },
+      { "text": "Smart Pointers", "link": "/memory-concurrency/smart-pointers" },
+      { "text": "Interior Mutability", "link": "/memory-concurrency/interior-mutability" },
+      { "text": "Custom Allocators", "link": "/memory-concurrency/custom-allocator" },
+      { "text": "Send and Sync", "link": "/memory-concurrency/send-and-sync" },
+      { "text": "Fearless Concurrency", "link": "/memory-concurrency/threads-and-channels" },
+      { "text": "Cross-Compilation", "link": "/memory-concurrency/cross-compilation" }
+    ]
   },
   {
     "text": "Async",
-    "link": "/async/"
+    "link": "/async/",
+    "collapsed": true,
+    "items": [
+      { "text": "async/await and Future", "link": "/async/async-await-and-future" },
+      { "text": "Executors and Runtimes", "link": "/async/executors-and-runtime" },
+      { "text": "Pin and Self-Reference", "link": "/async/pin-and-self-reference" },
+      { "text": "The tokio Ecosystem", "link": "/async/tokio-ecosystem" },
+      { "text": "select, Timeouts and Cancellation", "link": "/async/select-and-cancellation" },
+      { "text": "Send in Async and async trait", "link": "/async/async-send-and-async-trait" }
+    ]
   },
   {
     "text": "Macros",
-    "link": "/macros/"
+    "link": "/macros/",
+    "collapsed": true,
+    "items": [
+      { "text": "Declarative Macros macro_rules!", "link": "/macros/declarative-macros" },
+      { "text": "Procedural Macros", "link": "/macros/proc-macros" }
+    ]
   },
   {
     "text": "Toolchain",
-    "link": "/tooling/"
+    "link": "/tooling/",
+    "collapsed": true,
+    "items": [
+      { "text": "Everyday cargo Workflows", "link": "/tooling/cargo-workflow" },
+      { "text": "rustfmt and Code Style", "link": "/tooling/rustfmt-style" },
+      { "text": "clippy and Lints", "link": "/tooling/clippy-lints" },
+      { "text": "rust-analyzer and Editors", "link": "/tooling/rust-analyzer-editor" },
+      { "text": "rustup and MSRV", "link": "/tooling/rustup-msrv" },
+      { "text": "Cross-Compilation: Local Commands and Artifact Records", "link": "/tooling/cross-compilation-practice" }
+    ]
   },
   {
     "text": "Ecosystem & Engineering",
-    "link": "/ecosystem/"
+    "link": "/ecosystem/",
+    "collapsed": true,
+    "items": [
+      { "text": "Workspaces and Multi-Crate Projects", "link": "/ecosystem/workspace" },
+      { "text": "Publishing a Crate to crates.io", "link": "/ecosystem/publish-crate" },
+      { "text": "FFI and C Interop", "link": "/ecosystem/ffi-c-interop" },
+      { "text": "Embedded Rust", "link": "/ecosystem/embedded-nostd" },
+      { "text": "WebAssembly", "link": "/ecosystem/wasm" }
+    ]
   },
   {
     "text": "Comparing with Other Languages",
-    "link": "/comparison/"
+    "link": "/comparison/",
+    "collapsed": true,
+    "items": [
+      { "text": "Rust vs C/C++", "link": "/comparison/vs-ccpp" },
+      { "text": "Rust vs Go", "link": "/comparison/vs-go" },
+      { "text": "Rust vs Java", "link": "/comparison/vs-java" },
+      { "text": "Quick Comparison Table", "link": "/comparison/cheatsheet-table" }
+    ]
   },
   {
     "text": "Glossary",
