@@ -2,8 +2,8 @@
 
 Declarative macros `macro_rules!` and procedural macros — Rust metaprogramming: generating code at compile time.
 
-- Declarative Macros `macro_rules!` — matcher syntax, `$(...)` repetition, hygiene and `$crate`, a `query!` DSL example.
-- Procedural Macros — the three derive/attribute/function-like forms, `TokenStream`/`Span`, the split of labour between `syn` and `quote`, compile-time overhead and error diagnostics.
+- [Declarative Macros `macro_rules!`](declarative-macros.md) — matcher syntax, `$(...)` repetition, hygiene and `$crate`, a `query!` DSL example.
+- [Procedural Macros](proc-macros.md) — the three derive/attribute/function-like forms, `TokenStream`/`Span`, the split of labour between `syn` and `quote`, compile-time overhead and error diagnostics.
 
 ---
 
