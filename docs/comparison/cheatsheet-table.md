@@ -1,6 +1,6 @@
 # Quick Comparison Table
 
-This page gathers the conclusions of the three comparison pages in this section and summarizes them by dimension. **Every cell is labeled with its type of evidence**: Measured (the author of this page ran it on this machine with rustc 1.99.0 / gcc & g++ 15.2.0 / go 1.27.1 / javac 21.0.12 and pasted the output), Official docs (an official page was checked), Qualitative (engineering consensus, no official source — please verify yourself). Any conclusion with no traceable source is uniformly marked "No source found".
+This page gathers the conclusions of the three comparison pages in this section and summarizes them by dimension. **Every cell is labeled with its type of evidence**: Measured (the author of this page ran it on this machine with rustc 1.99.0 / gcc & g++ 15.2.0 / go 1.27.1 / javac 21.0.12 and pasted the output), Official docs (an official page was checked), Qualitative (engineering consensus, no official source — please verify yourself). Any conclusion with no traceable source is uniformly marked "no source found".
 
 > Test environment: Linux x86-64, rustc 1.99.0, gcc/g++ 15.2.0, go 1.27.1, javac 21.0.12. Numbers will change across environments; **read the order of magnitude and the semantics of the conclusions — do not memorize the numbers**.
 
@@ -17,7 +17,7 @@ This page gathers the conclusions of the three comparison pages in this section 
 
 | Language | When memory is freed | Determinism | Basis |
 | --- | --- | --- | --- |
-| Rust | End of scope, dropped in **reverse** declaration order | Fully deterministic | Measured: `main body ends → drop b → drop a`; official docs (Book, chapter 4) |
+| Rust | End of scope, dropped in **reverse** declaration order | Fully deterministic | Measured: `main 主体结束 → drop b → drop a`; official docs (Book, chapter 4) |
 | C/C++ | Explicit `free`/`delete`; RAII / smart pointers are released on scope exit | Deterministic for explicit calls; easy to leak with bare new/delete | Measured (dangling example segfaults); RAII semantics per the C++ standard (the corresponding cppreference entry was not checked verbatim this time) |
 | Go | Decided by the GC, concurrent mark-sweep | Unpredictable (frequency tunable) | Official docs (go.dev/doc/gc-guide: "does most of its work concurrently") |
 | Java | Decided by the GC, generational + compaction | Unpredictable | Official docs (Oracle GC tuning guide: generational scavenging) |
@@ -73,7 +73,7 @@ This page gathers the conclusions of the three comparison pages in this section 
 | --- | --- | --- | --- |
 | Rust | cargo (official; build + test + publish in one) | crates.io + `Cargo.lock` pinning | Official docs (doc.rust-lang.org/cargo) |
 | C/C++ | CMake/Make (build generators, not an official language companion) | No unified standard: system packages / vcpkg / Conan / FetchContent | Qualitative (the official cmake.org site positioning; dependency ecosystem diversity is community consensus) |
-| Go | `go build` / `go mod` (built into the language) | Go module proxy (go.dev/ref/mod) | Official docs (go.dev/ref/mod) |
+| Go | `go build` / `go mod` (built into the language) | Go module proxy (`go.dev/ref/mod`) | Official docs (go.dev/ref/mod) |
 | Java | Maven / Gradle (de facto standard, **not built into the language**) | Maven Central | Qualitative (community consensus) |
 
 ## Type system features
@@ -89,7 +89,7 @@ This page gathers the conclusions of the three comparison pages in this section 
 
 | Language | How "may be absent" is represented | Consequence of not handling it | Basis |
 | --- | --- | --- | --- |
-| Rust | `Option<T>`, encoded in the type | It **will not compile** without an unwrap (adding 1 to an `Option<i32>` gives `error[E0369]`); an explicit `unwrap()` is what panics | Measured (`called Option::unwrap() on a None value`, exit 101) |
+| Rust | `Option<T>`, encoded in the type | It **will not compile** without an unwrap (doing `+1` on an `Option<i32>` gives `error[E0369]`); an explicit `unwrap()` is what panics | Measured (`called Option::unwrap() on a None value`, exit 101) |
 | C/C++ | Pointers may be null; checking before dereferencing is on you | Dereferencing a null pointer = UB | The C++ standard draft UB list (the null-dereference entry was not checked verbatim this time); community consensus |
 | Go | Pointers/interfaces may be nil; the idiomatic `, ok` double return | A nil dereference panics (at runtime) | Qualitative (community consensus; runtime panic behavior was not measured on this page) |
 | Java | Every reference type may be `null` | An NPE is thrown at runtime: `Cannot invoke "Integer.toString()" because "<local2>" is null` | Measured + JDK 14+ Helpful NPE (the error message includes the variable name, visible in the measurement) |
@@ -123,7 +123,7 @@ This page gathers the conclusions of the three comparison pages in this section 
 
 ## How to use this table
 
-- **Check the "Basis" column first when reading any cell**: `Measured` is reproducible (the three comparison pages in this section list the commands), Official docs can be clicked to verify, and Qualitative/No source found need you to verify them yourself.
+- **Check the "Basis" column first when reading any cell**: Measured is reproducible (the three comparison pages in this section list the commands), Official docs can be clicked to verify, and Qualitative/No source found need you to verify them yourself.
 - **Do not memorize absolute numbers across languages**: binary size, compile time, and concurrency scale all depend heavily on the machine and the environment. The semantic conclusions (compile-time interception vs runtime UB) are the knowledge that actually transfers.
 - **How to read UB-class conclusions**: "C/C++ data races are UB" is a standard-level ruling, not a guarantee that every run fails — the c3 measurement on this page, where all 5 runs were correct, is itself a counterexample. The standard ruling and the observed behavior should be stated separately.
 

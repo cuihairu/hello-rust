@@ -105,7 +105,7 @@ Path dependencies automatically become workspace members (per the official docs)
 ## Engineering practices
 
 - **Flatten the member layout**: the official recommendation is to keep all members under `crates/` and use the wildcard `members = ["crates/*"]`;
-- **Share the lockfile and `target/`**: the workspace root maintains a single `Cargo.lock` and `target/`, avoiding duplicate compilation;
+- **Share the lockfile and target/**: the workspace root maintains a single `Cargo.lock` and `target/`, avoiding duplicate compilation;
 - **`resolver = "3"`**: the resolver paired with edition 2024, handling feature unification and `default-features` inheritance correctly;
 - **Run cargo commands from a member directory**: cargo walks up to find the workspace root automatically, so `cargo run` inside `crates/app/` also works.
 
