@@ -1,10 +1,10 @@
 # hello-rust
 
-<p align="center"><a href="https://cuihairu.github.io/hello-rust/"><img src="https://img.shields.io/badge/docs-docs-blue" alt="docs"></a></p>
+<p align="center"><a href="https://cuihairu.github.io/hello-rust//"><img src="https://img.shields.io/badge/docs-blue" alt="docs"></a></p>
 
 <img src="logo.svg" width="64" height="64">
 
-Rust notes and experiments drawn from game development: ownership, borrowing, lifetimes, traits, async, macros and tooling, with the bugs and tradeoffs I ran into along the way.
+Personal Rust notes, experiments and lessons from a game developer's perspective: ownership, borrowing, lifetimes, traits, async, macros and tooling.
 
 **Read online**: <https://cuihairu.github.io/hello-rust//>
 
