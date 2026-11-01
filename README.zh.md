@@ -1,13 +1,14 @@
 # hello-rust
 
+<p align="center"><a href="https://cuihairu.github.io/hello-rust/zh/"><img src="https://img.shields.io/badge/docs-文档-blue" alt="docs"></a></p>
+
 <img src="logo.svg" width="64" height="64">
 
 这里记录我在游戏开发中用 Rust 的笔记、实验和踩坑经验，涉及所有权、借用、生命周期、trait、异步、宏与工具链。
 
-**在线阅读**：<https://cuihairu.github.io/hello-rust/>
+**在线阅读**：<https://cuihairu.github.io/hello-rust/zh/>
 
 English document: [README.md](README.md)。
-
 ## 本地运行
 
 要求 Node.js 18+（建议 20+）。

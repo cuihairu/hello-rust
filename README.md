@@ -1,13 +1,14 @@
 # hello-rust
 
+<p align="center"><a href="https://cuihairu.github.io/hello-rust/"><img src="https://img.shields.io/badge/docs-docs-blue" alt="docs"></a></p>
+
 <img src="logo.svg" width="64" height="64">
 
 Rust notes and experiments drawn from game development: ownership, borrowing, lifetimes, traits, async, macros and tooling, with the bugs and tradeoffs I ran into along the way.
 
-**Read online**: <https://cuihairu.github.io/hello-rust/>
+**Read online**: <https://cuihairu.github.io/hello-rust//>
 
 中文文档见 [README.zh.md](README.zh.md)。
-
 ## Run locally
 
 Requires Node.js 18+ (20+ recommended).
