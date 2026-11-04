@@ -1,12 +1,20 @@
-# hello-rust
+<div align="center">
 
-<p align="center"><a href="https://cuihairu.github.io/hello-rust/zh//"><img src="https://img.shields.io/badge/%E6%96%87%E6%A1%A3-blue" alt="docs"></a></p>
+[English](README.md) | [中文](README.zh.md)
 
-<img src="logo.svg" width="64" height="64">
+<p align="center"><img src="logo.svg" width="64" height="64" alt="logo" /></p>
+
+# Hello Rust
+
+<p align="center"><a href="https://cuihairu.github.io/hello-rust/"><img src="https://img.shields.io/badge/docs-blue" alt="docs"></a></p>
+
+</div>
+
+---
 
 个人 Rust 学习笔记、实验与心得，从游戏开发者视角记录所有权、借用、生命周期、trait、异步、宏与工具链。
 
-**在线阅读**：<https://cuihairu.github.io/hello-rust/zh//>
+**在线阅读**：<https://cuihairu.github.io/hello-rust/zh/>
 
 English document: [README.md](README.md)。
 ## 本地运行
@@ -14,13 +22,13 @@ English document: [README.md](README.md)。
 要求 Node.js 18+（建议 20+）。
 
 ```bash
-npm ci                # 安装依赖
-npm run docs:dev      # 开发模式，热更新
-npm run docs:build    # 产出静态站到 docs/.vitepress/dist/（含死链核查，死链即失败）
-npm run docs:preview  # 本地预览构建产物
+pnpm install                # 安装依赖
+pnpm run docs:dev      # 开发模式，热更新
+pnpm run docs:build    # 产出静态站到 docs/.vitepress/dist/（含死链核查，死链即失败）
+pnpm run docs:preview  # 本地预览构建产物
 ```
 
-> 若 npm 配置了禁用 install scripts（安装时出现 `npm warn install-scripts`），构建如报 esbuild 二进制缺失，执行 `npm rebuild esbuild` 后重试。
+> 若包管理器配置了禁用 install scripts，构建如报 esbuild 二进制缺失，执行 `pnpm rebuild esbuild` 后重试。
 
 ## 目录结构
 
