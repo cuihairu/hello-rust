@@ -79,7 +79,22 @@ Actual run output:
     "position": { "line": 7, "character": 9 },
     "label": [
       { "value": ": " },
-      { "value": "Vec", "location": { "uri": "file:///home/cui/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs", "range": { "start": { "line": 435, "character": 11 }, "end": { "line": 435, "character": 14 } } } },
+      {
+        "value": "Vec",
+        "location": {
+          "uri": "file:///home/cui/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs",
+          "range": {
+            "start": {
+              "line": 435,
+              "character": 11
+            },
+            "end": {
+              "line": 435,
+              "character": 14
+            }
+          }
+        }
+      },
       { "value": "<i32>" }
     ],
     "kind": 1
@@ -88,9 +103,39 @@ Actual run output:
     "position": { "line": 8, "character": 9 },
     "label": [
       { "value": ": " },
-      { "value": "Result", "location": { "uri": "file:///home/cui/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/result.rs", "range": { "start": { "line": 557, "character": 9 }, "end": { "line": 557, "character": 15 } } } },
+      {
+        "value": "Result",
+        "location": {
+          "uri": "file:///home/cui/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/result.rs",
+          "range": {
+            "start": {
+              "line": 557,
+              "character": 9
+            },
+            "end": {
+              "line": 557,
+              "character": 15
+            }
+          }
+        }
+      },
       { "value": "<u8, " },
-      { "value": "ParseIntError", "location": { "uri": "file:///home/cui/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/num/error.rs", "range": { "start": { "line": 80, "character": 11 }, "end": { "line": 80, "character": 24 } } } },
+      {
+        "value": "ParseIntError",
+        "location": {
+          "uri": "file:///home/cui/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/num/error.rs",
+          "range": {
+            "start": {
+              "line": 80,
+              "character": 11
+            },
+            "end": {
+              "line": 80,
+              "character": 24
+            }
+          }
+        }
+      },
       { "value": ">" }
     ],
     "kind": 1
