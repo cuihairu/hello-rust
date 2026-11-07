@@ -30,3 +30,25 @@
 
 - 新仓库首次 deploy-pages 报 `HttpError: Not Found`：仓库无 Pages 站点记录，需 `gh api repos/cuihairu/hello-rust/pages --method POST --field build_type=workflow --field source.branch=main --field source.path=/` 创建后重跑；`PUT` 仅用于更新，`source.path` 只能 `/` 或 `/docs`，dist 路径由 upload-pages-artifact 决定。
 - VitePress 标题/内联文本里的裸尖括号（如 `## Option<T>`）会被 Vue 当 HTML 标签，构建报 "Element is missing end tag"；须包反引号。`<https://...>` autolink 与代码块内无碍。
+
+## 源码分层分析 2026-11-07
+
+- [x] 英文分层文档已落 `docs/review/source-layer-analysis-2026-11-07.md`（中文版留待下一轮独立任务）
+
+### a) 抽象层清单（每层一行：职责 + 代表模块 file:line）
+
+- 内容层：知识页面（英文 57 篇 + 中文镜像 57 篇）—— `docs/language-core/ownership-and-move.md:1`
+- 站点配置层：VitePress 元数据 / locale / 导航 / 搜索 / 死链门禁 —— `docs/.vitepress/config.mts:7,17,45`
+- 导航层：侧栏路由真源（双语言）—— `docs/.vitepress/sidebar.en.json:3`、`docs/.vitepress/sidebar.zh.json:3`
+- 构建层：npm 脚本 / 主题入口 / 可读性 CSS —— `package.json:5`、`docs/.vitepress/theme/index.ts:1`、`docs/.vitepress/theme/custom.css:1`
+- 部署层：GitHub Actions 构建 + Pages 上传 —— `.github/workflows/deploy-docs.yml:3,32,37`
+- 归档层：审计/溯源记录，站点路由排除 —— `docs/review/structure-audit-2026-10-19.md:1`、`docs/.vitepress/config.mts:10`
+- 元数据层：README / OUTLINE / 台账 / LICENSE / .gitignore —— `README.md:1`、`OUTLINE.md:3`、`todo.md:1`、`.gitignore:1`
+
+### b) 超大文件候选（>1000 行）
+
+无 >1000 行文件（源码最大为 `docs/zh/glossary.md` 与 `docs/glossary.md`，各 508 行）。
+
+### c) 目录/分类不合理处（逐条带 file:line）
+
+未见分类问题。
