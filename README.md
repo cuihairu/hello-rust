@@ -48,20 +48,21 @@ docs/
 ├── comparison/         # Rust vs C/C++/Go/Java
 ├── .vitepress/
 │   ├── config.mts      # site config (base / nav / search / dead-link gate)
-│   └── sidebar.json    # sidebar — the single slug list for all pages
+│   ├── sidebar.en.json # English sidebar — the only slug list for English pages
+│   └── sidebar.zh.json # Chinese sidebar — the only slug list for Chinese pages
 └── public/             # favicon / logo (same logo.svg)
-OUTLINE.md              # historical writing plan; navigation source is sidebar.json
+OUTLINE.md              # historical writing plan; navigation source is the locale sidebars
 todo.md                 # audit ledger: open items / done items with commit evidence
 ```
 
-Each topic starts with its own `index.md` (topic overview). Sidebar order and links are maintained only in `docs/.vitepress/sidebar.json`.
+Each topic starts with its own `index.md` (topic overview). Sidebar order and links are maintained only in `docs/.vitepress/sidebar.en.json` and `docs/.vitepress/sidebar.zh.json`.
 
 ## Writing rules
 
 - One or two core ideas per page, 80–200 lines, body text in Chinese.
 - Code examples are reproducible: snippets compile and run with `rustc`/`cargo` as shown; outputs in code comments are copied from real runs.
 - Heading structure: a single H1 per page, `##` / `###` inside; same shape as the sister site hello-postgresql.
-- Every page ends with two blocks: `## 相关页面` (in-site relative links without the `.md` suffix, slugs from `sidebar.json`) and one official-docs link line.
+- Every page ends with two blocks: `## 相关页面` (in-site relative links without the `.md` suffix, slugs from the locale sidebar files) and one official-docs link line.
 - Fact checking: syntax and semantics are verified against the [Rust book](https://doc.rust-lang.org/book/), [the Rust reference](https://doc.rust-lang.org/reference/), [the std docs](https://doc.rust-lang.org/std/), [RFCs](https://rust-lang.github.io/rfcs/) and [The Rustonomicon](https://doc.rust-lang.org/nomicon/) before writing them down; if a fact cannot be verified, the page says so explicitly ("未找到出处").
 
 ## Deploy

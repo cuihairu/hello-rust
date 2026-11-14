@@ -48,20 +48,21 @@ docs/
 ├── comparison/         # 与其他语言对照
 ├── .vitepress/
 │   ├── config.mts      # 站点配置（base / 导航 / 搜索 / 死链门禁）
-│   └── sidebar.json    # 侧边栏（全站页面的唯一 slug 清单）
+│   ├── sidebar.en.json # 英文侧边栏（英文页面的唯一 slug 清单）
+│   └── sidebar.zh.json # 中文侧边栏（中文页面的唯一 slug 清单）
 └── public/             # favicon / logo（与根目录同一 logo.svg）
-OUTLINE.md              # 历史写作规划；站点导航以 sidebar.json 为准
+OUTLINE.md              # 历史写作规划；站点导航以各语言 sidebar JSON 为准
 todo.md                 # 巡检台账：未完成项 / 已完成项与 commit 证据
 ```
 
-每个主题的入口是该目录下的 `index.md`（主题概览）。侧栏链接与顺序只维护在 `docs/.vitepress/sidebar.json`；修改导航时不要在 OUTLINE.md 另维护一份清单。
+每个主题的入口是该目录下的 `index.md`（主题概览）。侧栏链接与顺序只维护在 `docs/.vitepress/sidebar.en.json` 与 `docs/.vitepress/sidebar.zh.json`；修改导航时不要在 OUTLINE.md 另维护一份清单。
 
 ## 写作口径
 
 - 每页聚焦 **1–2 个核心知识点**，80–200 行，中文正文。
 - 代码示例**可复现**：片段按所示方式 `rustc`/`cargo` 真跑可过，注释里的输出为真实运行结果。
 - 标题层级：每页单一 H1，内文 `##` / `###`，与 hello-postgresql 姊妹站同构。
-- 页尾固定两段：`## 相关页面`（站内相对链接，不带 `.md` 后缀，slug 以 `sidebar.json` 为准）+ 官方文档链接一行。
+- 页尾固定两段：`## 相关页面`（站内相对链接，不带 `.md` 后缀，slug 以各语言 sidebar JSON 为准）+ 官方文档链接一行。
 - 事实核验：拿不准的语法/语义对照 [Rust Book](https://doc.rust-lang.org/book/)、[Reference](https://doc.rust-lang.org/reference/)、[std 文档](https://doc.rust-lang.org/std/)、[RFC](https://rust-lang.github.io/rfcs/) 与 [The Rustonomicon](https://doc.rust-lang.org/nomicon/) 核实后落笔；查不到的显式标注「未找到出处」。
 
 ## 部署
